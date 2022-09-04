@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>项目信息详情|上交所科创板股票审核</title>
+<meta name="description" content="">
+<meta name="author" content="上海证券交易所">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-title" content="上海证券交易所">
+<meta property="wb:webmaster" content="6983a1253ca799d0" />
+<script>var col_id=11541; var col_old_id="";</script>
+
+<!-- CSS -->
+<!-- 引入 Bootstrap -->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font.css">
+<link rel="stylesheet" type="text/css" href="/css/fontpage.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/index_style.css">
+<link rel="stylesheet" type="text/css" href="/css/menu.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-datetimepicker.css">
+
+<!--[if lt IE 9]>
+     <script src="/js/lib/html5shiv.min.js"></script>
+     <script src="/js/lib/respond.js"></script>
+<![endif]-->
+
+<!-- JS -->
+<script type="text/javascript" src="/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="/js/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/browser.js"></script>
+<script type="text/javascript" src="/js/sseInfo-common.js"></script>
+<script type="text/javascript" src="/js/39full.js"></script>
+<script type="text/javascript" src="/js/menuFn.js"></script>
+<script type="text/javascript" src="/js/menuEvent.js"></script>
+<script type="text/javascript" src="/js/common/publicRs.js"></script>
+<script type="text/javascript" src="/js/common/public_func.js"></script>
+<script type="text/javascript" src="/js/common/common.js"></script>
+<script type="text/javascript" src="/js/lib/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/js/js.js"></script>
+
+
+</head>
+<body>
+
+<div class="topbar">
+    <div class="wrapper clearfix">
+<p class="fl">
+            <a href="/home/">首页</a><span style="color:#AEAEAE;"> | </span><a href="http://www.sse.com.cn/" target="_blank">上交所网站</a><span style="color:#AEAEAE;"> | </span><a href="http://star.sse.com.cn/" target="_blank">上交所科创板</a>
+        </p>
+        <!--p class="fr"><a href="/home/reportingcenter/fraud/" >欺诈发行举报</a> <btn class="login_btn"><a  href="#" target="_blank">登录/注册</a> </btn></p-->
+    </div>
+</div>
+
+<div class="header_pc">
+    <div class="wrap">
+        <div class="logo">
+            <a href="/home/"><img src="/images/logo.png" alt=""></a> 
+        </div>
+        <div class="nav">
+            <div class="nav-main js_navMain">
+                <ul>
+                </ul>
+                <div class="js_showSubNav tl navShowSub">
+                </div>
+            </div>
+            <div class="nav-sub js_subNav">
+            </div>
+        </div>
+        <div class="search">
+            <div class="js_btnSearch btn_search icon-search_1"></div>
+            <div class="searchWarp js_searchWarp">
+                <input type="text" class="kw" id="search_keyword" placeholder="输入关键词，查询保荐机构、发行人等">
+                <input type="button" class="ok" id="search_btn"><i class="icon-search_2"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header_mobile">
+    <button type="button" class="navbar-toggle collapsed">
+    <span></span>
+    </button>
+
+    <div class="main-width">
+        <div class="navbar navbar-default">
+            <div>
+                <div class="navbar-header">
+                    <a href="/home/" class="nav-log-mobile"><img class="logo" src="/images/logo.png" alt=""></a>
+                </div>
+                <!-- 手机版导航菜单 -->
+                <div class="dl-menuwrapper" id="dl-menu">
+                    <ul class="dl-menu dl-subview dl-menu-toggle" id="mobile_menu">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search_mobile js_search_wrap_mobile">
+        <div class="row">
+            <div class="col-xs-10">
+                <input type="text" class="input_search_mobile" id="search_keyword_mobile" placeholder="输入关键词，查询保荐机构、发行人等">
+            </div>
+            <div class="col-xs-2">
+                <div class="btn_search_mobile icon-search_mobile" id="search_btn_mobile"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="top_banner"><div class="top_img" style="background:url(/renewal/banner/a/20181220/8682439886397f1f6b0bca6f98e744bb.jpg);background-size:cover;"></div>	
+
+	<div class="path visible-pc">
+		<div class="container">
+			<div class="row breadcrumb_wrap">
+                              <ol  class="breadcrumb js_breadcrumb"></ol>
+			</div>
+		</div>
+	</div>
+</div><style>
+  .file {
+    text-decoration: underline;
+    color: #666;
+  }
+
+  #yjhf td {
+    padding-left: 10px !important;
+    text-align: left !important;
+    word-wrap: break-word;
+    white-space: pre-line;
+  }
+
+  #yjhf tbody tr td:first-child,
+  #sswyjhf tbody tr td:first-child,
+  #zcjgtz tbody tr td:first-child,
+  #yjhf tbody tr td:last-child,
+  #sswyjhf tbody tr td:last-child,
+  #zcjgtz tbody tr td:last-child,
+  #yjhf thead tr th:first-child,
+  #sswyjhf thead tr th:first-child,
+  #zcjgtz thead tr th:first-child,
+  #yjhf thead tr th:last-child,
+  #sswyjhf thead tr th:last-child,
+  #zcjgtz thead tr th:last-child,
+  .alignLeft {
+    text-align: center !important;
+  }
+
+  .xmxq-jbxx-con table th {
+    width: 20%;
+    word-wrap: break-word;
+    white-space: pre-line;
+    text-align: center;
+    background-color: #9CD0E5;
+  }
+
+  .xmxq-jbxx-con table td {
+    width: 30%;
+    word-wrap: break-word;
+    white-space: pre-line;
+  }
+
+  .xmxq-xxpl-con table th {
+    background-color: #9CD0E5;
+    width: 25%;
+    text-align: center;
+  }
+
+  .xmxq-xxpl-con table td {
+    width: 25%;
+    text-align: center;
+  }
+
+  .xmxq-wxhf-con table th {
+    background-color: #9CD0E5;
+  }
+
+  .xmxq-jbxx-con table td,
+  .xmxq-xxpl-con table td,
+  .xmxq-wxhf-con table td {
+    background-color: #EEF9FD;
+  }
+
+  .xmxq-jbxx-con .table>tbody>tr>th,
+  .xmxq-xxpl-con .table>tbody>tr>th,
+  .xmxq-wxhf-con .table>tbody>tr>th {
+    border-top: 1px solid #8BBCCD;
+  }
+
+  .xmxq-jbxx h3,
+  .xmxq-xxpl h3,
+  .xmxq-wxhf h3 {
+    border-bottom: 1px solid #B2B2B2;
+    padding-bottom: 10px;
+  }
+
+  .xmxq-wxhf .table>thead>tr>th {
+    border-bottom: 0;
+  }
+
+  .step_bar {
+    margin-bottom: 15px;
+    padding: 15px 10px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    height: 150px;
+  }
+
+  .step_bar ul li {
+    float: left;
+    list-style: none;
+    width: 16%;
+    text-align: center;
+  }
+
+  .step_bar ul li.step_bar_left01 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center 45px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_left02 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -75px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_left03 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -195px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center01 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -315px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center02 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -435px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center03 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -555px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center04 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -675px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center05 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -795px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_right01 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -915px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_right02 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -1035px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_right03 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -1155px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_right04 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -1275px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_left04 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -1995px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_left05 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -2115px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_left06 {
+    height: 115px;
+    background: url(/images/standby-right-red.gif) center 34px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center06 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -1395px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center07 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -1515px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center08 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -1635px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center09 {
+    height: 115px;
+    background: url(/images/standby-center-red.gif) center 34px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center10 {
+    height: 115px;
+    background: url(/images/standby-center-blue.gif) center 34px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center11 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -1755px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_center12 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -1875px no-repeat;
+  }
+
+  .step_bar ul li.step_bar_right05 {
+    height: 115px;
+    background: url(/images/step_bar_bg.png?v=20190620) center -2235px no-repeat;
+  }
+
+  .step_bar ul li strong {
+    display: block;
+    margin-bottom: 55px;
+    color: #4489CA;
+  }
+
+  .step_bar ul li span {
+    color: #999;
+    font-size: 13px;
+    display: block;
+    height: 21px;
+  }
+
+  .step_bar_center06 span,
+  .step_bar_center11 span,
+  .step_bar_left05 span {
+    padding-left: 78px;
+  }
+
+  .step_bar_date {
+    color: #4489CA;
+    font-size: 13px;
+    margin-top: -80px;
+    padding-top: 5px;
+  }
+
+  .step_bar_date_s {
+    color: #4489CA;
+    font-size: 13px;
+    margin-top: -60px;
+    padding-top: 5px;
+  }
+
+  .step_bar ul {
+    min-width: 1115px;
+  }
+
+  .triangle {
+    position: absolute;
+    top: -11px;
+    border-bottom: 7px solid #cd000f;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    right: 10px;
+  }
+
+  .al-hide {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .table tr {
+    white-space: normal;
+  }
+
+  #zcother tr,
+  #zzhtz tr {
+    white-space: normal;
+  }
+
+  @media screen and (max-width: 768px) {
+    .xmxq-jbxx-con table th {
+      white-space: nowrap;
+    }
+
+    .xmxq-jbxx-con table td {
+      white-space: nowrap;
+    }
+
+    .xmxq-xxpl-con table th {
+      white-space: nowrap;
+    }
+
+    .xmxq-xxpl-con table td {
+      white-space: nowrap;
+    }
+
+    #yjhf td {
+      white-space: nowrap;
+    }
+
+    #zcother tr {
+      white-space: nowrap;
+    }
+  }
+
+  #step10F,
+  #step10S {
+    display: none;
+  }
+
+  #IPOStatus>li {
+    width: 20%;
+    /*16%*/
+    position: relative;
+  }
+
+  #IPOStatus2>li {
+    width: 9%;
+    position: relative
+  }
+
+  .zzhtz {
+    display: none
+  }
+
+  .zzhtz thead tr .col-md-1,
+  .zzhtz thead tr .col-md-2 {
+    text-align: center;
+  }
+
+  .zh_type {
+    font-style: normal;
+    position: absolute;
+    width: 120px;
+    right: -60px;
+    bottom: 0%;
+    text-align: center;
+  }
+
+  .pages {
+    padding: 20px 0;
+  }
+</style>
+
+
+<!-- <script type="text/javascript" src="/js/common/public_func.js"></script> -->
+<script type="text/javascript">
+  var url = destinationHostURI + "/commonSoaQuery.do?jsonCallBack=?";
+  var stockAuditNum = utils.getParamsFromParentPage("auditId", null).auditId;
+
+  var offerType = "1";
+  var status_bar = false; //判断是不是暂缓审议
+  var fswhy = false;
+
+  var num = 0;
+  var params = {
+    'isPagination': true,
+    'sqlId': 'SH_XM_LB',
+    'stockAuditNum': stockAuditNum
+  }; // 基本信息
+  var attach_param = {
+    'isPagination': false,
+    'sqlId': 'GP_GPZCZ_SHXXPL',
+    'stockAuditNum': stockAuditNum
+  }; // 信息披露&问询恢复
+  var statusHis_param = {
+    'isPagination': false,
+    'sqlId': 'GP_GPZCZ_XMDTZTTLB',
+    'stockAuditNum': stockAuditNum
+  }; // 进度条
+  var ggyjg_param = {
+    'isPagination': false,
+    'sqlId': 'GP_GPZCZ_SSWHYGGJG',
+    'fileType': '1,2,3,4',
+    'stockAuditNum': stockAuditNum
+  }; // 上市委会议公告与结果
+  var code10 = false;
+  var progress = {};
+
+  progress.pause = '7'; //中止
+  progress.end = '8'; //终止
+
+  progress.IPO = ['1F', '2F', '3F', '2M', '3M', '4F', '10F', '5F'];
+
+  progress.IPO2 = ['1F', '2F', '3F', '2M', '3M', '9S', '1S', '2S', '3S', '4S', '10S', '5S'];
+  // 进度条展示
+  progress.initBar = function (index, arr) {
+    var liName = "#step";
+    if (arr.length == 0 || (arr.length == 1 && (String(arr[0].auditStatus) == progress.pause || String(arr[0].auditStatus) == progress.end))) return;
+
+    var startP = 0; //从正常状态的第一个点开始
+    var endP;
+    var specilP = null;
+    var baseVal = progress.IPO;
+    var perLength = "20%";
+    var first = false;
+    var containerName = "#IPOStatus";
+
+    for (var m = 0; m < arr.length; m++) {
+      var temp = String(arr[m].auditStatus);
+      if (temp == "9") {
+        if (m != 0) {
+          containerName = "#IPOStatus2";
+          baseVal = progress.IPO2;
+        }
+        break;
+      }
+    }
+    var sType = "F";
+    var sType_s = sType;
+    for (var i = 0; i < arr.length; i++) {
+      var status = String(arr[i].auditStatus);
+      if (status == "10") {
+        var commitiResult = String(arr[i].commitiResult);
+        if (containerName == "#IPOStatus") {
+          $(containerName).find("li").css("width", "16%"); //16%
+          code10 = true;
+        } else {
+          $(containerName).find("li").css("width", "8.3%");
+        }
+        $(containerName).find(".step10F").show();
+        $(containerName).find(".step10F").find(".step_bar_date_s").text(arr[i].publishDate);
+      }
+      if (status == "9") {
+        fswhy = true;
+        var commitiResult = String(arr[i].commitiResult);
+        $(containerName + " #testStatus9" + sType).css("display", "");
+        if (commitiResult == "4") {
+          $(containerName + " #testStatus9" + sType).text("通过");
+        } else if (commitiResult == "5") {
+          $(containerName + " #testStatus9" + sType).text("未通过");
+        }
+        sType = "S";
+        sType_s = "S";
+      }
+
+      if (status == "3") {
+        var commitiResult = String(arr[i].commitiResult);
+        $(containerName + " #testStatus3" + sType_s).css("display", "");
+        if (commitiResult == "1") {
+          $(containerName + " #testStatus3" + sType_s).css("display", "");
+          $(containerName + " #testStatus3" + sType_s).text("通过");
+        } else if (commitiResult == "3") {
+          $(containerName + " #testStatus3" + sType_s).css("display", "");
+          $(containerName + " #testStatus3" + sType_s).text("未通过");
+        } else if (commitiResult == "6") {
+          $(containerName + " #testStatus3" + sType).css("display", "");
+          $(containerName + " #testStatus3" + sType).text("暂缓审议");
+          status_bar = true;
+          sType_s = "M";
+        }
+      }
+
+
+      if (status == "5") {
+        var registeResult = String(arr[i].registeResult);
+        if (registeResult == "1") {
+          $(containerName + " #testStatus5").text("注册生效");
+        } else if (registeResult == "2") {
+          $(containerName + " #testStatus5").text("不予注册");
+        } else if (registeResult == "3") {
+          $(containerName + " #testStatus5").text("终止注册");
+        }
+      }
+      if ($.inArray(status + sType, baseVal) > -1) {
+        var commitiResult = String(arr[i].commitiResult);
+        if (status == "2" || (status == "3" && commitiResult != "6")) {
+          $(containerName + " " + liName + status + sType_s).children("div").html(arr[i].publishDate);
+          endP = $.inArray(status + sType_s, baseVal);
+        } else {
+          $(containerName + " " + liName + status + sType).children("div").html(arr[i].publishDate);
+          endP = $.inArray(status + sType, baseVal);
+        }
+
+
+      }
+      if (i == arr.length - 1 && $.inArray(status + sType, baseVal) < 0) {
+        specilP = arr[i];
+      }
+
+    }
+    $(containerName).css("display", "");
+
+    if (String(arr[arr.length - 1].auditStatus) == "8") {
+      var count = endP + 2;
+      if (count > 2) {
+        if (status_bar || endP <= 2) {
+          perLength = Math.floor(10000 / count) / 100 + "%";
+        } else {
+          perLength = Math.floor(10000 / (count - 2)) / 100 + "%";
+        }
+      } else if (count <= 2 && count > 0) {
+        perLength = "30%";
+      }
+    }
+
+    for (var j = startP; j <= endP; j++) {
+      var status = baseVal[j];
+      //第一个点
+      if (j == startP) {
+        if (j == 0) {
+          $(containerName + " " + liName + status).attr("class", "step_bar_left03");
+        } else {
+          cssName = (j == baseVal.length - 1) ? "step_bar_right03" : "step_bar_center04";
+          $(containerName + " " + liName + status).attr("class", cssName);
+        }
+        continue;
+      }
+      cssName = (j == baseVal.length - 1) ? "step_bar_right02" : "step_bar_center05";
+      $(containerName + " " + liName + status).attr("class", cssName);
+    }
+    //动态计算进度条长度
+    if (status_bar) {
+      if ($("#IPOStatus #step10F").css("display") == "none") {
+        var IPOStatusLength = $("#IPOStatus li").length - 1;
+      } else {
+        var IPOStatusLength = $("#IPOStatus li").length;
+      }
+      if ($("#IPOStatus2 #step10S").css("display") == "none") {
+        var IPOStatusLength2 = $("#IPOStatus2 li").length - 1;
+      } else {
+        var IPOStatusLength2 = $("#IPOStatus2 li").length;
+      }
+    } else {
+      $(containerName + " #step2M").hide();
+      $(containerName + " #step3M").hide();
+      if ($("#IPOStatus #step10F").css("display") == "none") {
+        var IPOStatusLength = $("#IPOStatus li").length - 3;
+      } else {
+        var IPOStatusLength = $("#IPOStatus li").length - 2;
+      }
+      if ($("#IPOStatus2 #step10S").css("display") == "none") {
+        var IPOStatusLength2 = $("#IPOStatus2 li").length - 3;
+      } else {
+        var IPOStatusLength2 = $("#IPOStatus2 li").length - 2;
+      }
+    }
+    $("#IPOStatus li").css("width", 100 / IPOStatusLength + '%');
+    $("#IPOStatus2 li").css("width", 100 / IPOStatusLength2 + '%');
+    if (specilP != null && endP < baseVal.length - 1) {
+      var suspendStatus = specilP.suspendStatus;
+      var susHtml = '<i class="zh_type">中止及财报更新</i>';
+      if (suspendStatus == 1) {
+        susHtml = '<i class="zh_type">中止（财报更新）</i>';
+      } else if (suspendStatus == 2) {
+        susHtml = '<i class="zh_type">中止（其他事项）</i>';
+      };
+      var status = String(specilP.auditStatus);
+      var preStatus = baseVal[endP];
+
+      if (status == progress.pause) {
+        cssName = (endP == startP) ? (startP == 0 ? "step_bar_left05" : "step_bar_center11") : "step_bar_center06";
+        $(containerName + " " + liName + preStatus).attr("class", cssName);
+        //展示日期
+        if (containerName == "#IPOStatus") {
+          if (code10) {
+            $(containerName + " " + liName + preStatus + " #code").html("<div class='triangle' style='right:35%' />").css('right', '-10%');
+            $(containerName + " " + liName + preStatus).append(susHtml);
+          } else {
+            $(containerName + " " + liName + preStatus + " #code").html("<div class='triangle' style='right:8px' />").css('right', '-5%');
+            $(containerName + " " + liName + preStatus).append(susHtml);
+          }
+        } else {
+          $(containerName + " " + liName + preStatus + " #code").html("<div class='triangle' />");
+          $(containerName + " " + liName + preStatus).append(susHtml);
+        }
+        $(containerName + " " + liName + preStatus + " #date").html(specilP.publishDate);
+
+      }
+      if (status == progress.end) {
+        cssName = (endP == startP) ? (startP == 0 ? "step_bar_left04" : "step_bar_center12") : "step_bar_center07";
+        $(containerName + " " + liName + preStatus).attr("class", cssName);
+        for (var j = endP + 1; j < baseVal.length - 1; j++) {
+          $(containerName + " " + liName + baseVal[j]).remove();
+        }
+        var _$ = $(containerName + " " + liName + baseVal[baseVal.length - 1]);
+        _$.attr("class", "step_bar_right05");
+        _$.children("strong").html("终止");
+        _$.children("div").html(specilP.publishDate);
+        _$.children("div").removeClass("step_bar_date");
+        _$.children("div").addClass("step_bar_date_s");
+        $(containerName + " li").css("width", perLength);
+      }
+
+    }
+  };
+  var getShortName = function (data) {
+    var issuers = data.stockIssuer;
+    if (issuers == undefined || issuers == null || issuers.length == 0) return "-";
+    var issuerIds = new Array();
+    var htmlArr = new Array();
+    for (var i = 0; i < issuers.length; i++) {
+      // 发行人信息重复不做处理
+      if ($.inArray(issuers[i].s_stockIssueId, issuerIds) > -1) continue;
+      issuerIds.push(issuers[i].s_stockIssueId);
+      var issuer_sec = issuers[i].s_issueCompanyAbbrName;
+      if (data.offerType == "2" && issuers[i].s_companyCode != null && issuers[i].s_companyCode != "-")
+        issuer_sec += "<br/>(" + issuers[i].s_companyCode + ")";
+      htmlArr.push(issuer_sec);
+    }
+
+    if (htmlArr.length > 0) return htmlArr.join("<br/>");
+    return "-";
+  }
+  $(document).ready(function () {
+    if (offerType == "1") {
+      $("#typeDesc").text("招股说明书");
+    }
+
+    if (stockAuditNum == null || stockAuditNum == undefined || stockAuditNum.length < 1 || stockAuditNum ==
+      "-") {
+      return;
+    }
+
+    // 项目具体信息表格赋值
+    utils.getJSON(url, params, function (data) {
+      if (data.result != null && data.result.length != 0) {
+        $("#issuer_full").html(publics.issuerType("0")(data.result[0]));
+        $("#issuer_full_title").html(publics.issuerType("0")(data.result[0]));
+        $("#issuer_sec").html(getShortName(data.result[0]));
+        $("#applyDate").text(publics.dateTrans('auditApplyDate', 8)(data.result[0]));
+        var captial = data.result[0].planIssueCapital;
+        if (captial != null && captial != undefined && captial != "" && captial != "-")
+          captial = (Number(captial)).toFixed(2);
+        $("#type").text(captial);
+
+        $("#status").html(status_transfer(data.result[0])).css({
+          "display": "inline-flex",
+          "width": "100%"
+        });
+        $("#updateDate").text(publics.dateTrans('updateDate', 8)(data.result[0]));
+        $("#sponsor").html(publics.personLink("1", ",")(data.result[0]));
+        $("#sponsor_org").html(publics.companyLink("1", "2", "<br/>", "fxss")(data.result[0]));
+        $("#accounts_org").html(publics.companyLink("2", "2", "<br/>", "fxss")(data.result[0]));
+        $("#accountant").html(publics.personLink("2", ",")(data.result[0]));
+        $("#law_firm").html(publics.companyLink("3", "2", "<br/>", "fxss")(data.result[0]));
+        $("#lawyer").html(publics.personLink("3", ",")(data.result[0]));
+        $("#assessor_org").html(publics.companyLink("4", "2", "<br/>", "fxss")(data.result[0]));
+        $("#assessor").html(publics.personLink("4", ",")(data.result[0]));
+      }
+    })
+
+    //进度条算法
+    utils.getJSON(url, statusHis_param, function (data) {
+      var dataArray = data.result;
+      progress.initBar(offerType, dataArray);
+      //var params = {'isPagination':true,'sqlId':'SH_XM_LB','stockAuditNum':stockAuditNum,auditStatus:auditStatus,'order':'qianDate|desc'};
+    })
+    //其他
+    var paramsData = {
+      'isPagination': false,
+      'stockAuditNum': stockAuditNum,
+      'sqlId': 'GP_GPZCZ_XMDTZTYYLB',
+      'order': 'qianDate|desc'
+    };
+    utils.getJSON(url, paramsData, function (res) {
+      var appendHtml = function (name, html) {
+        if ($(name).length > 0) {
+          if ($(name).html() == '-' || $(name).html().length <= 0) {
+            $(name).html(html);
+          } else {
+            $(name).append(html);
+          }
+        }
+      }
+      var result = res.result;
+      var num = 0;
+      result.forEach(function (res, index) {
+        var blockName = "";
+        if (res.reasonDesc) {
+          num++;
+          blockName = "#zcother tbody";
+          appendHtml(blockName, "<tr><td style='text-align:center'>" + num +
+            "</td><td><span>" + res.reasonDesc +
+            "</span></td><td style='text-align:center'>" + res.publishDate +
+            "</td></tr>");
+        }
+      })
+    })
+    //披露文件
+    utils.getJSON(url, attach_param, function (data) {
+      var appendHtml = function (name, html) {
+        if ($(name).length > 0) {
+          if ($(name).html() == '-' || $(name).html().length <= 0) {
+            $(name).html(html);
+          } else {
+            $(name).append(html);
+          }
+        }
+      }
+
+      var yjhfCount = 1;
+      var sswyjhfCount = 1;
+      var zcjgtzCount = 1;
+
+      for (var i = 0; data.result != null && i < data.result.length; i++) {
+        var docName = "";
+        if (data.result[i].fileType == "30" || data.result[i].fileType == "36" || data.result[i]
+          .fileType == "37" || data.result[i].fileType == "32" || data.result[i].fileType ==
+          "33") { // 信息披露
+          docName = "#tile" + data.result[i].fileType + " .vs" + data.result[i].fileVersion;
+        } else if (data.result[i].fileType == "5" || data.result[i].fileType == "6") { // 问询和回复
+          var pldate = "";
+          pldate += data.result[i].fileUpdateTime.substring(0, 4) + "-" + data.result[i]
+            .fileUpdateTime.substring(4, 6) + "-" + data.result[i].fileUpdateTime.substring(
+              6, 8);
+          docName = "#yjhf tbody";
+          appendHtml(docName, "<tr><td style='text-align:center'>" + yjhfCount++ +
+            "</td><td><a class='file' target='_blank' href='" + staticFileURI + data
+              .result[i].filePath + "'>" + data.result[i].fileTitle +
+            "</a></td><td style='text-align:center'>" + pldate + "</td></tr>");
+          continue;
+        } else if (data.result[i].fileType == "35") { // 注册结果通知
+          var pldate = "";
+          pldate += data.result[i].fileUpdateTime.substring(0, 4) + "-" + data.result[i]
+            .fileUpdateTime.substring(4, 6) + "-" + data.result[i].fileUpdateTime.substring(
+              6, 8);
+          docName = "#zcjgtz tbody";
+          appendHtml(docName, "<tr><td style='text-align:center'>" + zcjgtzCount++ +
+            "</td><td><a class='file' target='_blank' href='" + staticFileURI + data
+              .result[i].filePath + "'>" + data.result[i].fileTitle +
+            "</a></td><td style='text-align:center'>" + pldate + "</td></tr>");
+          continue;
+        } else if (data.result[i].fileType == "38") { // 终止审核通知
+          var pldate = "";
+          $(".zzhtz").show();
+          pldate += data.result[i].fileUpdateTime.substring(0, 4) + "-" + data.result[i]
+            .fileUpdateTime.substring(4, 6) + "-" + data.result[i].fileUpdateTime.substring(
+              6, 8);
+          docName = "#zzhtz tbody";
+          appendHtml(docName, "<tr><td style='text-align:center'>" + zcjgtzCount++ + "</td><td><a class='file' target='_blank' href='" + staticFileURI + data.result[i].filePath + "'>" + data.result[i].fileTitle + "</a></td><td style='text-align:center'>" + pldate + "</td></tr>");
+          continue;
+
+        } else {
+          docName = "#tile34" + " .vs" + data.result[i].fileVersion;
+        }
+        var xxpldate = "";
+        xxpldate += data.result[i].fileUpdateTime.substring(0, 4) + "-" + data.result[i]
+          .fileUpdateTime.substring(4, 6) + "-" + data.result[i].fileUpdateTime.substring(6,
+            8);
+        appendHtml(docName, "<a class='file' target='_blank' href='" + staticFileURI + data
+          .result[i].filePath + "' title='" + data.result[i].fileTitle + "'>" + xxpldate +
+          "</a><br>");
+      }
+    })
+
+    // 上市委会议公告与结果
+    utils.getJSON(url, ggyjg_param, function (data) {
+      var appendHtml = function (name, html) {
+        if ($(name).length > 0) {
+          if ($(name).html() == '-' || $(name).html().length <= 0) {
+            $(name).html(html);
+          } else {
+            $(name).append(html);
+          }
+        }
+      }
+      var ggyjgCount = 1;
+      for (var i = 0; data.result != null && i < data.result.length; i++) {
+        var blockName = "";
+        blockName = "#sswyjhf tbody";
+        appendHtml(blockName, "<tr><td style='text-align:center'>" + ggyjgCount++ +
+          "</td><td><a class='file' target='_blank' href='" + staticFileURI + data.result[
+            i].filePath + "'>" + data.result[i].fileTitle +
+          "</a></td><td style='text-align:center'>" + date_transfer_sub(data.result[i]) +
+          "</td></tr>");
+      }
+    })
+
+  })
+</script>
+
+<div class="table_title clearfix container xmxq-jbxx">
+  <h3 id="issuer_full_title"></h3>
+  <div class="clear"></div>
+</div>
+<div class="container">
+  <div class="step_bar">
+    <div class="al-hide">
+      <ul class="clearfix" style="display:none;position:relative;overflow: hidden;" id="IPOStatus" style="width: 25%">
+        <li class="step_bar_left01" id="step1F">
+          <strong>已受理</strong>
+          <span id="code" style="padding-top:0px;padding-left: 0px;width:20%;color:#222222;position:absolute;">
+          </span><span id="date" style="padding:0;width:100%;left:50%;color:#222222;position:absolute;"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_center01" id="step2F">
+          <strong>已问询</strong>
+          <span id="code" style="padding-top:0px;padding-left: 0px;width:20%;color:#222222;position:absolute;">
+          </span><span id="date" style="padding:0;width:100%;left:50%;color:#222222;position:absolute;"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_center01" id="step3F">
+          <strong>上市委会议</strong>
+          <strong id="testStatus3F" style="margin-bottom: -20px;display:none;height:20px;"> </strong>
+          <span id="code" style="padding-top:0px;padding-left: 0px;width:20%;color:#222222;position:absolute;">
+          </span><span id="date" style="padding:0;width:100%;left:50%;color:#222222;position:absolute;"></span>
+          <div class="step_bar_date"> </div>
+        </li>
+        <li class="step_bar_center01" zchy="step2M" id="step2M">
+          <strong>已问询</strong>
+          <span id="code" style="padding-top:0px;padding-left: 0px;width:20%;color:#222222;position:absolute;">
+          </span><span id="date" style="padding:0;width:100%;left:50%;color:#222222;position:absolute;"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_center01" zchy="step3M" id="step3M">
+          <strong>上市委会议</strong>
+          <strong id="testStatus3M" style="margin-bottom: -20px;display:none;height:20px;"> </strong>
+          <span id="code" style="padding-top:0px;padding-left: 0px;width:20%;color:#222222;position:absolute;">
+          </span><span id="date" style="padding:0;width:100%;left:50%;color:#222222;position:absolute;"></span>
+          <div class="step_bar_date"> </div>
+        </li>
+        <li class="step_bar_center01" id="step4F">
+          <strong>提交注册</strong>
+          <span id="code" style="padding-top:0px;padding-left: 0px;color:#222222;position:absolute;">
+          </span><span id="date" style="padding:0;width:100%;left:50%;color:#222222;position:absolute;"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_center05 step10F" id="step10F">
+          <strong>补充审核</strong>
+          <span id="code"
+            style="padding-top:0px;padding-left: 0px;width:20%;margin-left:90%;color:#222222;position:absolute;">
+          </span><span id="date" style="padding:0;width:100%;left:50%;color:#222222;position:absolute;"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_right01" id="step5F">
+          <strong id="testStatus5">注册结果</strong>
+          <strong style="margin-bottom: -20px;display:none;"> </strong>
+          <span id="code"
+            style="padding-top:0px;padding-left: 0px;width:20%;margin-left:90%;color:#222222;position:absolute;">
+          </span><span id="date" style="padding:0;width:100%;left:50%;color:#222222;position:absolute;"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+      </ul>
+      <div class="clear"> </div>
+      <ul class="clearfix" style="display:none;position:relative;overflow: hidden;" id="IPOStatus2">
+        <li class="step_bar_left01" id="step1F">
+          <strong>已受理</strong>
+          <span id="code"
+            style="padding-top:0px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_center01" id="step2F">
+          <strong>已问询</strong>
+          <span id="code"
+            style="padding-top:0px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_center01" id="step3F">
+          <strong>上市委会议</strong>
+          <strong id="testStatus3F" style="margin-bottom: -20px;display:none;height:20px;"> </strong>
+          <span id="code"
+            style="padding-top:0px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date"> </div>
+        </li>
+        <li class="step_bar_center01" zchy="step2M" id="step2M">
+          <strong>已问询</strong>
+          <span id="code"
+            style="padding-top:0px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_center01" zchy="step3M" id="step3M">
+          <strong>上市委会议</strong>
+          <strong id="testStatus3M" style="margin-bottom: -20px;display:none;height:20px;"> </strong>
+          <span id="code"
+            style="padding-top:0px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date"> </div>
+        </li>
+        <li class="step_bar_center01" id="step9S">
+          <strong>复审委会议</strong>
+          <strong id="testStatus9F" style="margin-bottom: -20px;display:none;"> </strong>
+          <span id="code"
+            style="padding-top:0px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date"> </div>
+        </li>
+        <li class="step_bar_center01" id="step1S">
+          <strong>已受理</strong>
+          <span id="code"
+            style="padding-top:0px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;color:#222222;position:absolute;width:100px;left:50%"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_center01" id="step2S">
+          <strong>已问询</strong>
+          <span id="code"
+            style="padding-top:0px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_center01" id="step3S">
+          <strong>上市委会议</strong>
+          <strong id="testStatus3S" style="margin-bottom: -20px;display:none;height:20px;"> </strong>
+          <span id="code"
+            style="padding-top:0px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date"> </div>
+        </li>
+        <li class="step_bar_center01" id="step4S">
+          <strong>提交注册</strong>
+          <span id="code"
+            style="padding-top:5px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_center05 step10F" id="step10S">
+          <strong>补充审核</strong>
+          <span id="code"
+            style="padding-top:5px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+        <li class="step_bar_right01" id="step5S">
+          <strong id="testStatus5">注册结果</strong>
+          <strong style="margin-bottom: -20px;display:none;"> </strong>
+          <span id="code"
+            style="padding-top:0px;padding-left:0;color:#222222;position:absolute;width: 85%;left: 30%;text-align: right;">
+          </span><span id="date" style="padding:0;width:100px;color:#222222;position:absolute;left:50%"></span>
+          <div class="step_bar_date_s"> </div>
+        </li>
+      </ul>
+      <div class="clear"> </div>
+      <!--    <div id="des" style="height:25px;width:60%;margin-left:12%;margin-top:20px;overflow:hidden;"></div> -->
+    </div>
+  </div>
+</div>
+
+<div class="table_title clearfix container xmxq-jbxx">
+  <h3>项目基本信息</h3>
+  <div class="clear"></div>
+</div>
+<div class="container xmxq-jbxx-con cl-hide">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>公司全称 </th>
+        <td id="issuer_full">-</td>
+        <th>受理日期 </th>
+        <td id="applyDate">-</td>
+      </tr>
+      <tr>
+        <th>公司简称 </th>
+        <td id="issuer_sec">-</td>
+        <th>融资金额(亿元)</th>
+        <td id="type">-</td>
+      </tr>
+      <tr>
+        <th>审核状态 </th>
+        <td id="status">-</td>
+        <th>更新日期 </th>
+        <td id="updateDate">-</td>
+      </tr>
+      <tr>
+        <th>保荐机构</th>
+        <td id="sponsor_org">-</td>
+        <th>保荐代表人 </th>
+        <td id="sponsor">-</td>
+      </tr>
+      <tr>
+        <th>会计师事务所 </th>
+        <td id="accounts_org">-</td>
+        <th>签字会计师 </th>
+        <td id="accountant">-</td>
+      </tr>
+      <tr>
+        <th>律师事务所 </th>
+        <td id="law_firm">-</td>
+        <th>签字律师 </th>
+        <td id="lawyer">-</td>
+      </tr>
+      <tr>
+        <th>评估机构 </th>
+        <td id="assessor_org">-</td>
+        <th>签字评估师 </th>
+        <td id="assessor">-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table_title clearfix container xmxq-xxpl">
+  <h3>信息披露</h3>
+  <div class="clear"></div>
+</div>
+<div class="container xmxq-xxpl-con cl-hide">
+  <table class="table">
+    <tr>
+      <th>披露文件</th>
+      <td>申报稿</td>
+      <td>上会稿</td>
+      <td>注册稿</td>
+    </tr>
+    <tr id="tile30">
+      <th id="typeDesc">招股说明书</th>
+      <td class="vs1">-</td>
+      <td class="vs2">-</td>
+      <td class="vs3">-</td>
+    </tr>
+    <tr id="tile36">
+      <th>发行保荐书</th>
+      <td class="vs1">-</td>
+      <td class="vs2">-</td>
+      <td class="vs3">-</td>
+    </tr>
+    <tr id="tile37">
+      <th>上市保荐书</th>
+      <td class="vs1">-</td>
+      <td class="vs2">-</td>
+      <td class="vs3">-</td>
+    </tr>
+    <tr id="tile32">
+      <th>审计报告</th>
+      <td class="vs1">-</td>
+      <td class="vs2">-</td>
+      <td class="vs3">-</td>
+    </tr>
+    <tr id="tile33">
+      <th>法律意见书</th>
+      <td class="vs1">-</td>
+      <td class="vs2">-</td>
+      <td class="vs3">-</td>
+    </tr>
+    <tr id="tile34">
+      <th>其他</th>
+      <td class="vs1">-</td>
+      <td class="vs2">-</td>
+      <td class="vs3">-</td>
+    </tr>
+  </table>
+</div>
+
+<div class="table_title clearfix container xmxq-wxhf">
+  <h3>问询与回复</h3>
+  <div class="clear"></div>
+</div>
+<div class="container xmxq-wxhf-con cl-hide">
+  <table class="table" id="yjhf">
+    <thead>
+      <tr>
+        <th class="col-md-1">序号</th>
+        <th class="col-md-9">文件名称</th>
+        <th class="col-md-2">披露日期</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<div class="table_title clearfix container xmxq-wxhf">
+  <h3>上市委会议公告与结果</h3>
+  <div class="clear"></div>
+</div>
+<div class="container xmxq-wxhf-con cl-hide">
+  <table class="table" id="sswyjhf">
+    <thead>
+      <tr>
+        <th class="col-md-1">序号</th>
+        <th class="col-md-9">文件名称</th>
+        <th class="col-md-2">披露日期</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<div class="table_title clearfix container xmxq-wxhf zzhtz">
+  <h3>终止审核决定</h3>
+  <div class="clear"></div>
+</div>
+<div class="container xmxq-wxhf-con cl-hide zzhtz">
+  <table class="table" id="zzhtz">
+    <thead>
+      <tr>
+        <th class="col-md-1">序号</th>
+        <th class="col-md-9">文件名称</th>
+        <th class="col-md-2">披露日期</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<div class="table_title clearfix container xmxq-wxhf">
+  <h3>注册结果文件</h3>
+  <div class="clear"></div>
+</div>
+<div class="container xmxq-wxhf-con cl-hide">
+  <table class="table" id="zcjgtz">
+    <thead>
+      <tr>
+        <th class="col-md-1">序号</th>
+        <th class="col-md-9">文件名称</th>
+        <th class="col-md-2">披露日期</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<div class="table_title clearfix container xmxq-wxhf">
+  <h3>其他</h3>
+  <div class="clear"></div>
+</div>
+<div class="container xmxq-wxhf-con cl-hide">
+  <table class="table" id="zcother">
+    <thead>
+      <tr>
+        <th class="col-md-1 alignLeft">序号</th>
+        <th class="col-md-9">原因</th>
+        <th class="col-md-2 alignLeft">披露日期</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<br><br><br>
+
+ 	
+
+<!-- 页脚 start -->
+<div class="footer">
+    <div class="footer-link">
+        <div class="container">
+            <i class="footer-link-icon"></i><span>快速链接</span>
+        </div>
+        <div class="quick-link container">
+            <ul class="row">
+                <li class="col-sm-6"><a href="http://www.csrc.gov.cn" target="_blank"></a></li>
+                <li class="col-sm-6"><a href="http://www.sse.com.cn" target="_blank"></a></li>
+                <li class="col-sm-6"><a href="http://star.sse.com.cn" target="_blank"></a></li>
+                <li class="col-sm-6"><a href="http://edu.sse.com.cn" target="_blank"></a></li>
+                <li class="col-sm-6"><a href="https://cnsca.sse.com.cn" target="_blank"></a></li>
+            </ul>
+        </div>
+        <div class="footer-menu container hidden-xs">
+            <a href="/">首页</a> | 
+            <a href="/announcement/notification/">公告通知</a> | 
+            <a href="/disclosure/">信息披露</a> | 
+            <a href="/renewal/">项目动态</a> | 
+            <a href="/lawandrule/laws/">法律规则</a> | 
+            <a href="/kczl/ty/">科创战略</a> | 
+            <a href="/credibility/supervision/">自律监管</a> | 
+            <a href="/aboutus/function/">关于我们</a> | 
+            <a href="/application/">业务办理</a>
+        </div>
+    </div>
+    <div class="footer-content">
+        <div class="footer-text-pc hidden-xs">
+    		©上海证券交易所版权所有 2019 <a style="color:#fff;" target="_blank" href="https://beian.miit.gov.cn/">沪ICP备05004045号-2</a> <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502016333" style="color: #fff;"><img src="/images/beian.png" > 沪公网安备 31011502016333号</a>
+    	</div>
+        <div class="footer-text-mobile visible-xs">
+            ©上海证券交易所版权所有 2019 <a style="color:#B3B3B3;" target="_blank" href="https://beian.miit.gov.cn/">沪ICP备05004045号-2</a><br /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502016333" style="text-decoration:none;color:#B3B3B3;"><img src="/images/beian.png"/> 沪公网安备 31011502016333号</a>
+        </div>
+    </div>
+</div>
+<!-- 页脚 end -->
+
+<!-- WeChat share -->
+<div id="wechat-share"></div>
+<script type="text/javascript">
+if (/micromessenger/.test(navigator.userAgent.toLowerCase())){
+    var tag1 = document.createElement('script');
+    tag1.setAttribute('type','text/javascript');
+    tag1.setAttribute('src','/js/lib/jweixin-1.2.0.js');
+    document.getElementById('wechat-share').appendChild(tag1);
+
+    var tag2 = document.createElement('script');
+    tag2.setAttribute('type','text/javascript');
+    tag2.setAttribute('src','/js/sse_wechatassistant.js?v0318');
+    document.getElementById('wechat-share').appendChild(tag2);
+     
+    window.onload = function (){
+        var kcbWechat = new sseWechatAssistant();
+        kcbWechat.init('wx8fd294d57db35754');
+    }
+}
+</script>
+
+
+
+<!-- SIA Start -->
+<script language="JavaScript">var _trackData = _trackData || []; var _$Mwebsite = '10000042';</script>
+<script type="text/javascript" charset="utf-8" id="sseinfo_js_id_10000042" src="http://www.sse.com.cn/js/la_new.js?v20170113"></script>
+<!-- SIA End -->
+
+
+
+
+
+</body>
+</html>
+
