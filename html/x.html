@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="content-style-type" content="text/css">
+    <meta http-equiv="content-script-type" content="text/javascript">
+    <script>
+        window.$BG_LANG='zh';
+    </script>
+    <script type="text/javascript" src="/eams/static/scripts/jquery/jquery,jquery.ui.core.js?bg=3.4.3"></script>
+    <script type="text/javascript" src="/eams/static/scripts/plugins/jquery-form,jquery-history,jquery-colorbox,jquery-chosen.js?bg=3.4.3"></script>
+    <script type="text/javascript" src="/eams/static/js/plugins/jquery.subscribe,/js/struts2/jquery.struts2,jquery.ui.struts2.js?bg=3.4.3"></script>
+    <script type="text/javascript" src="/eams/static/scripts/beangle/beangle,beangle-ui.js?bg=3.4.3"></script>
+    <script type="text/javascript">var App = {contextPath:"/eams"};jQuery(document).ready(function () {jQuery.struts2_jquery.version="3.6.1";beangle.contextPath=App.contextPath;jQuery.scriptPath = App.contextPath+"/static/";jQuery.struts2_jquerySuffix = "";jQuery.ajaxSettings.traditional = true;jQuery.ajaxSetup ({cache: false});});</script>
+    <script type="text/javascript" src="/eams/static/scripts/my97/WdatePicker-4.72.js?compress=no"></script><link href="/eams/static/themes/default/WdatePicker.css" rel="stylesheet" type="text/css">
+
+
+    <script type="text/javascript" src="/eams/static/scripts/highcharts/code/highcharts.js?compress=no"></script>
+    <script type="text/javascript" src="/eams/static/scripts/highcharts/code/highcharts-3d.js?compress=no"></script>
+    <script type="text/javascript" src="/eams/static/scripts/highcharts/code/modules/exporting.js?compress=no"></script>
+
+
+
+    <link id="jquery_theme_link" rel="stylesheet" href="/eams/static/themes/smoothness/jquery-ui.css?s2j=3.6.1" type="text/css">
+    <link id="beangle_theme_link" href="/eams/static/themes/default/beangle-ui,colorbox,chosen.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/eams/static/css/foundation.css" type="text/css">
+
+        <script src="/eams/static/scripts/require.config.js?v=3"></script>
+        <script>
+        require.baseUrl="/eams/static/scripts";
+        </script>
+        <script src="/eams/static/scripts/require.js"></script>
+        <script type="text/javascript" src="/eams/static/scripts/require.js"></script>
+        
+        <!-- backbone & underscore -- fontend MVC framework -->
+        <script type="text/javascript" src="/eams/static/scripts/underscore.min.js"></script>
+        <script type="text/javascript" src="/eams/static/scripts/backbone.min.js"></script>
+        <script type="text/javascript" src="/eams/static/scripts/underscore.string.min.js"></script>
+        <script>
+        require(['underscore.string'], function(_s) {
+                _.str = _s;
+                _.mixin(_.str.exports());
+        });
+        </script>
+        
+
+    <link rel="stylesheet" type="text/css" href="/eams/static/themes/default/css/semesterCalendar.css">
+</head>
+<body>
+    <body style="">
+
+        <div id="toolbar20826294511" class="toolbar notprint"><div class="toolbar-title"><span class="toolbar-icon action-info"></span><strong>我的课表</strong></div><div class="toolbar-items" id="toolbar20826294511_items"></div><div class="toolbar-msg" id="toolbar20826294511_msg" style="display: none;"></div><div class="toolbar-line"><img height="1" width="100%" align="top" src="/eams/static/themes/default/icons/16x16/actions/keyline.png"></div></div>
+        <script type="text/javascript">
+          bar = bg.ui.toolbar("toolbar20826294511",'我的课表');
+          
+          bar.addHr();
+        </script><div style="background: url('/eams/static/images/semesterBarBg.png') repeat-x scroll 50% 50% #DEEDF7;border: 1px solid #AED0EA;color: #222222;font-weight: bold;height:28px;">
+        
+        <form id="courseTableForm" name="courseTableForm" action="/eams/courseTableForStd.action" method="post" target="">
+        
+        <div style="margin-left:4px;margin-top:2px;float:left;line-height:22px;height:22px;">
+                <input type="hidden" name="ignoreHead" value="1">
+            <label for="courseTableType" class="title">课表类型:</label>
+            <select id="courseTableType" name="setting.kind" onchange="searchTable()" style="width:120px">
+                <option value="std">学生课表</option>
+                 
+            </select>
+            |
+            <label for="startWeek" class="title">选择教学周:</label>
+            <select id="startWeek" name="startWeek" onchange="searchTable()">
+                <option value="">全部</option>
+                <option value="1">第1周</option><option value="2">第2周</option><option value="3">第3周</option><option value="4">第4周</option><option value="5">第5周</option><option value="6">第6周</option><option value="7">第7周</option><option value="8">第8周</option><option value="9">第9周</option><option value="10">第10周</option><option value="11">第11周</option><option value="12">第12周</option><option value="13">第13周</option><option value="14">第14周</option><option value="15">第15周</option><option value="16">第16周</option><option value="17">第17周</option><option value="18">第18周</option>
+            </select>
+            |
+        
+        </div>
+        <div style="margin-left:10px;margin-top:2px;float:left;line-height:18px;height:22px;">
+        <label for="semesterBar20826294511" style="display: none;">项目:</label>
+        <select id="semesterBar20826294511" name="project.id" style="display: none;">	<option value="1" selected="">本科</option>
+        </select>
+            <label for="semesterBar20826294511Semester" class="title">学年学期:</label>
+            <input id="semesterBar20826294511Semester" class="calendar-text calendar-text-state-default" title="学年学期" type="text" value="" readonly="true">
+            <div class="calendar-bar" tabindex="-1">
+                <input id="semesterCalendar_target" type="hidden" name="semester.id" value="202">
+                <a name="prev" href="javascript:void(0)" style="display:none"><img src="/eams/static/themes/default/images/semesterCalendar_prev.gif"></a>
+                <input id="semesterCalendar_year" class="calendar-bar-input" type="text" index="8" value="" maxlength="4" size="4" readonly="true" style="display:none"><span style="display:none">学年</span>
+                <a name="next" href="javascript:void(0)" style="display:none"><img src="/eams/static/themes/default/images/semesterCalendar_next.gif"></a>
+                
+                <a name="prev" href="javascript:void(0)" style="display:none"><img src="/eams/static/themes/default/images/semesterCalendar_prev.gif"></a>
+                <input id="semesterCalendar_term" class="calendar-bar-input" type="text" index="0" value="" size="4" readonly="true" style="display:none"><span style="display:none">学期</span>
+                <a name="next" href="javascript:void(0)" style="display:none"><img src="/eams/static/themes/default/images/semesterCalendar_next.gif"></a>
+                <a href="javascript:void(0)" id="allSemester" style="display:none"></a>
+                
+                <table id="semesterCalendar_yearTb" class="semesterCalendar_yearTb" style="border-right: 1px solid rgb(221, 221, 221);">
+                    <tbody><tr><td class="calendar-bar-td-blankBorder" index="0">2014-2015</td><td class="calendar-bar-td-blankBorder" index="1">2015-2016</td><td class="calendar-bar-td-blankBorder" index="2">2016-2017</td></tr><tr><td class="calendar-bar-td-blankBorder" index="3">2017-2018</td><td class="calendar-bar-td-blankBorder" index="4">2018-2019</td><td class="calendar-bar-td-blankBorder" index="5">2019-2020</td></tr><tr><td class="calendar-bar-td-blankBorder" index="6">2020-2021</td><td class="calendar-bar-td-blankBorder" index="7">2021-2022</td><td class="calendar-bar-td-blankBorder" index="8">2022-2023</td></tr></tbody>
+                </table>
+                <!-- 两个table之间的空div用来解决IE6 下莫名其妙重复渲染最后一个学年td中的文字的bug-->
+                <div></div>
+                <table id="semesterCalendar_termTb" class="semesterCalendar_termTb" style="border-left: 0px none;">
+                    <tbody><tr><td class="calendar-bar-td-blankBorder" val="202">学期<span>1</span></td></tr><tr><td class="calendar-bar-td-blankBorder" val="203">学期<span>2</span></td></tr><tr><td class="calendar-bar-td-blankBorder" val="204">学期<span>3</span></td></tr></tbody>
+                </table>
+            </div>
+            <script type="text/javascript" src="/eams/static/scripts/semesterCalendar_zh.js"></script>
+            <script type="text/javascript">
+                if(jQuery.struts2_jquery.scriptCache["/scripts/semesterCalendar.js?s2j="+jQuery.struts2_jquery.version]){
+                    jQuery("#semesterBar20826294511Semester").semesterCalendar({empty:"false",onChange:"",value:"202"},"searchTable()");
+                }else{
+                    jQuery.struts2_jquery.require("/scripts/semesterCalendar.js",function(){
+                        jQuery("#semesterBar20826294511Semester").semesterCalendar({empty:"false",onChange:"",value:"202"},"searchTable()");
+                    },'/eams/static');
+                }
+        
+            </script>
+        <script type="text/javascript">
+                jQuery("#semesterBar20826294511").val(jQuery.post("/eams/dataQuery.action",{dataType:"projectId"}));
+                jQuery("#semesterBar20826294511").hide();
+                jQuery("#semesterBar20826294511").prev().hide();
+                var semesterBar20826294511res = jQuery.post("/eams/dataQuery.action",{entityId:""},function(){
+                    if(semesterBar20826294511res.status==200){
+                        jQuery("#semesterBar20826294511").empty();
+                        if(semesterBar20826294511res.responseText!=""){
+                            jQuery("#semesterBar20826294511").append(semesterBar20826294511res.responseText);
+                        }
+                    }
+                },"text");
+            jQuery("#semesterBar20826294511").change(function(){
+                jQuery.post("/eams/dataQuery!changeProjectId.action",{projectId:this.value},function(){
+                    jQuery("#semesterBar20826294511Semester")[0].getSemesters(jQuery("#semesterBar20826294511Semester"),{empty:"false",value:"202"},"searchTable()");
+                },"text");
+            });
+        </script>
+        <input type="submit" value="切换学期" onclick="searchTable();return false;">
+        </div>
+        
+        <input name="ids" value="4375" type="hidden"><input name="tutorRedirectstudentId" value="4375" type="hidden"></form>
+        </div><table class="indexpanel">
+            <tbody><tr>
+                <td class="index_content">
+        <div id="contentDiv" class="ajax_container">
+         
+        <script language="JavaScript" type="text/JavaScript" src="/eams/static/scripts/course/TaskActivity.js?v3.21"></script>
+        
+        <style>
+        .courseTable .titleCorner {
+            height: 10px;
+            width: 100px;
+        }
+        </style><script language="JavaScript">
+            function fillTable(table,weeks,units,tableIndex){
+            
+                  for(var i=0;i<weeks;i++){
+                     for(var j=0;j<units-1;j++){
+                         var index =units*i+j;
+                         var preTd=jQuery("#TD"+index+"_"+tableIndex);
+                         var nextTd=jQuery("#TD"+(index+1)+"_"+tableIndex);
+                         while(table.marshalContents[index]!=null&&table.marshalContents[index+1]!=null&&table.marshalContents[index]==table.marshalContents[index+1]){
+                             nextTd.remove();
+                             var spanNumber = 1;
+                             if(preTd.prop("rowSpan")) spanNumber = new Number(preTd.prop("rowSpan"))
+                             spanNumber++;
+                             preTd.prop("rowSpan",spanNumber);
+                             j++;
+                             if(j>=units-1){
+                                 break;
+                             }
+                             index=index+1;
+                             nextTd=jQuery("#TD"+(index+1)+"_"+tableIndex);
+                         }
+                     }
+                 }
+                 
+                        for(var k = 0; k < table.unitCounts; k++){
+                    var td=document.getElementById("TD" + k + "_" + tableIndex);
+                    if(td != null && table.marshalContents[k] != null) { 
+                        td.innerHTML = table.marshalContents[k];
+                        td.style.backgroundColor="#94aef3";
+                        td.className = "infoTitle";
+                        
+                        // 查找冲突 table.activities是什么，可以查看TaskActivity.js和courseTableContent_script.ftl
+                        var activitiesInCell = table.activities[k];
+                        if(detectCollisionInCell(activitiesInCell)) {
+                            td.style.backgroundColor="red";
+                        }
+                        td.className="infoTitle";
+                        td.title=table.marshalContents[k].replace(/<br>/g,";");
+                    }
+                }
+               }
+        function detectCollisionInCell(activitiesInCell) {
+            if(activitiesInCell.length <=1)
+                return false;
+            //单元格的课程集合[courseId(seqNo)->true]
+            var cellCourseIds=new Object();
+            var mergedValidWeeks = activitiesInCell[0].vaildWeeks.split("");
+            //登记第一个课程
+            cellCourseIds[ activitiesInCell[0].courseName]=true;
+            for(var z = 1; z < activitiesInCell.length; z++) {		
+                var detectCollision = false;
+                var tValidWeeks = activitiesInCell[z].vaildWeeks.split("");
+                if(mergedValidWeeks.length != tValidWeeks.length) {
+                    alert('mergedValidWeeks.length != tValidWeeks.length');
+                    return;
+                }
+                for(var x = 0; x < mergedValidWeeks.length; x++) {	//53代表53周
+                    var m = new Number(mergedValidWeeks[x]);
+                    var t = new Number(tValidWeeks[x]);
+                    if(m + t <= 1) {
+                        mergedValidWeeks[x] = m + t;
+                    }
+                    else {
+                        //如果已经是登记过的，则不算冲突
+                        if(!cellCourseIds[activitiesInCell[z].courseName]){
+                              return true;	//发现冲突
+                          }
+                      }
+                  }
+                  //登记该课程
+                  cellCourseIds[activitiesInCell[z].courseName]=true;
+            }
+            return false;
+        }
+        </script>
+                   <pre>课表格式说明：教师姓名 课程名称(序号) (第n周-第m周,教室)</pre>
+                <table width="100%" id="manualArrangeCourseTable" align="center" class="gridtable" style="text-align:center">
+                    <thead>
+                    <tr>
+                        <th style="background-color:#DEEDF7;" height="10px" width="100px">节次/周次
+                        </th><th style="background-color:#DEEDF7;">
+                            <font size="2px">星期一</font>
+                        </th>
+                        <th style="background-color:#DEEDF7;">
+                            <font size="2px">星期二</font>
+                        </th>
+                        <th style="background-color:#DEEDF7;">
+                            <font size="2px">星期三</font>
+                        </th>
+                        <th style="background-color:#DEEDF7;">
+                            <font size="2px">星期四</font>
+                        </th>
+                        <th style="background-color:#DEEDF7;">
+                            <font size="2px">星期五</font>
+                        </th>
+                        <th style="background-color:#DEEDF7;">
+                            <font size="2px">星期六</font>
+                        </th>
+                        <th style="background-color:#DEEDF7;">
+                            <font size="2px">星期日</font>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody><tr>
+                        <td style="background-color:#EEFF00">
+                            <font size="2px"> 第一节<br>	8:15
+        -	9:00
+        </font>
+                        </td>
+                           <td id="TD0_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="算法与数据结构(CS101.01) (赵登吉);(9-16,教学中心302);算法与数据结构(CS101.01) (耿浩);(1-8,教学中心302)">算法与数据结构(CS101.01) (赵登吉)<br>(9-16,教学中心302)<br>算法与数据结构(CS101.01) (耿浩)<br>(1-8,教学中心302)</td>
+                           <td id="TD13_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="电路基础(EE111.01) (邹新波);;;(1-16,信息学院1D-108)">电路基础(EE111.01) (邹新波)<br><br><br>(1-16,信息学院1D-108)</td>
+                           <td id="TD26_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="算法与数据结构(CS101.01) (赵登吉);(9-16,教学中心302);算法与数据结构(CS101.01) (耿浩);(1-8,教学中心302)">算法与数据结构(CS101.01) (赵登吉)<br>(9-16,教学中心302)<br>算法与数据结构(CS101.01) (耿浩)<br>(1-8,教学中心302)</td>
+                           <td id="TD39_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="电路基础(EE111.01) (邹新波);;;(1-16,信息学院1D-108)">电路基础(EE111.01) (邹新波)<br><br><br>(1-16,信息学院1D-108)</td>
+                           <td id="TD52_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD65_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD78_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#EEFF00">
+                            <font size="2px"> 第二节<br>	9:10
+        -	9:55
+        </font>
+                        </td>
+                           
+                           
+                           
+                           
+                           <td id="TD53_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD66_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="8" class="infoTitle" title="医疗器械合规管理(103271) (Edna Hu);;;(3 6,生命学院A106)">医疗器械合规管理(103271) (Edna Hu)<br><br><br>(3 6,生命学院A106)</td>
+                           <td id="TD79_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="4" class="infoTitle" title="风险、改进与验证(103279) (徐昊);(11-12,生命学院A106);风险、改进与验证(103279) (周昊天);(7-10,生命学院A106);医疗器械合规管理(103271) (Edna Hu);(2-3,生命学院A106)">风险、改进与验证(103279) (徐昊)<br>(11-12,生命学院A106)<br>风险、改进与验证(103279) (周昊天)<br>(7-10,生命学院A106)<br>医疗器械合规管理(103271) (Edna Hu)<br>(2-3,生命学院A106)</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#EEFF00">
+                            <font size="2px"> 第三节<br>	10:15
+        -	11:00
+        </font>
+                        </td>
+                           <td id="TD2_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="气溶胶科学与技术(103079) (冯继成);;;(1-16,物质学院 1-401)">气溶胶科学与技术(103079) (冯继成)<br><br><br>(1-16,物质学院 1-401)</td>
+                           <td id="TD15_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD28_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD41_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD54_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           
+                           
+                    </tr>
+                    <tr>
+                        <td style="background-color:#EEFF00">
+                            <font size="2px"> 第四节<br>	11:10
+        -	11:55
+        </font>
+                        </td>
+                           
+                           <td id="TD16_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD29_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD42_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD55_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           
+                           
+                    </tr>
+                    <tr>
+                        <td style="background-color:#33BB00">
+                            <font size="2px"> 第五节<br>	13:00
+        -	13:45
+        </font>
+                        </td>
+                           <td id="TD4_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="4" class="infoTitle" title="现代木工设计及实践(GE1001.01) (缪晓东);;;(1-8,学生科创中心105 - 木工教室)">现代木工设计及实践(GE1001.01) (缪晓东)<br><br><br>(1-8,学生科创中心105 - 木工教室)</td>
+                           <td id="TD17_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD30_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD43_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="催化原理基础(CHEM1585.01) (马贵军);;;(1-16,物质学院 1-105)">催化原理基础(CHEM1585.01) (马贵军)<br><br><br>(1-16,物质学院 1-105)</td>
+                           <td id="TD56_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="计算催化(103095) (杨波);;;(1-16,物质学院 1-501)">计算催化(103095) (杨波)<br><br><br>(1-16,物质学院 1-501)</td>
+                           
+                           
+                    </tr>
+                    <tr>
+                        <td style="background-color:#33BB00">
+                            <font size="2px"> 第六节<br>	13:55
+        -	14:40
+        </font>
+                        </td>
+                           
+                           <td id="TD18_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD31_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           
+                           
+                           
+                           <td id="TD83_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="4" class="infoTitle" title="风险、改进与验证(103279) (徐昊);(11-12,生命学院A106);风险、改进与验证(103279) (江智浩);(7-10,生命学院A106);医疗器械合规管理(103271) (Edna Hu);(2-3,生命学院A106)">风险、改进与验证(103279) (徐昊)<br>(11-12,生命学院A106)<br>风险、改进与验证(103279) (江智浩)<br>(7-10,生命学院A106)<br>医疗器械合规管理(103271) (Edna Hu)<br>(2-3,生命学院A106)</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#33BB00">
+                            <font size="2px"> 第七节<br>	15:00
+        -	15:45
+        </font>
+                        </td>
+                           
+                           <td id="TD19_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="科学家的社会影响力与表达模式(CLGE1001.01) (汤维维);;;(1-16,创管学院205)">科学家的社会影响力与表达模式(CLGE1001.01) (汤维维)<br><br><br>(1-16,创管学院205)</td>
+                           <td id="TD32_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD45_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="3" class="infoTitle" title="数学建模(MATH1311.01) (肖柳青);;;(1-16,教学中心404)">数学建模(MATH1311.01) (肖柳青)<br><br><br>(1-16,教学中心404)</td>
+                           <td id="TD58_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           
+                           
+                    </tr>
+                    <tr>
+                        <td style="background-color:#33BB00">
+                            <font size="2px"> 第八节<br>	15:55
+        -	16:40
+        </font>
+                        </td>
+                           
+                           
+                           <td id="TD33_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           
+                           <td id="TD59_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           
+                           
+                    </tr>
+                    <tr>
+                        <td style="background-color:#33BB00">
+                            <font size="2px"> 第九节<br>	16:50
+        -	17:35
+        </font>
+                        </td>
+                           <td id="TD8_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD21_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD34_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           
+                           <td id="TD60_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           
+                           
+                    </tr>
+                    <tr>
+                        <td style="background-color:pink">
+                            <font size="2px"> 第十节<br>	18:00
+        -	18:45
+        </font>
+                        </td>
+                           <td id="TD9_0" style="background-color: rgb(148, 174, 243); font-size: 12px;" rowspan="2" class="infoTitle" title="史前中国的技术与社会(GEHA1136.01) (涂栋栋);;;(1-16,创管学院106)">史前中国的技术与社会(GEHA1136.01) (涂栋栋)<br><br><br>(1-16,创管学院106)</td>
+                           <td id="TD22_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD35_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD48_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD61_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD74_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD87_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:pink">
+                            <font size="2px"> 第十一节<br>	18:55
+        -	19:40
+        </font>
+                        </td>
+                           
+                           <td id="TD23_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD36_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD49_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD62_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD75_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD88_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:pink">
+                            <font size="2px"> 第十二节<br>	19:50
+        -	20:35
+        </font>
+                        </td>
+                           <td id="TD11_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD24_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD37_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD50_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD63_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD76_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD89_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:pink">
+                            <font size="2px"> 第十三节<br>	20:45
+        -	21:30
+        </font>
+                        </td>
+                           <td id="TD12_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD25_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD38_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD51_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD64_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD77_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                           <td id="TD90_0" style="backGround-Color:#ffffff;font-size:12px"></td>
+                    </tr>
+                </tbody></table> 
+        <script language="JavaScript">
+            // function CourseTable in TaskActivity.js
+            var language = "zh";
+            var table0 = new CourseTable(2022,91);
+            var unitCount = 13;
+            var index=0;
+            var activity=null;
+                var teachers = [{id:1948,name:"赵登吉",lab:false},{id:9429893,name:"耿浩",lab:false}];
+                var actTeachers = [{id:1948,name:"赵登吉",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"2586(CS101.01)","算法与数据结构(CS101.01)","230","教学中心302","00000000011111111000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =0*unitCount+0;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =0*unitCount+1;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:1948,name:"赵登吉",lab:false},{id:9429893,name:"耿浩",lab:false}];
+                var actTeachers = [{id:1948,name:"赵登吉",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"2586(CS101.01)","算法与数据结构(CS101.01)","230","教学中心302","00000000011111111000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =2*unitCount+0;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =2*unitCount+1;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:1948,name:"赵登吉",lab:false},{id:9429893,name:"耿浩",lab:false}];
+                var actTeachers = [{id:9429893,name:"耿浩",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"2586(CS101.01)","算法与数据结构(CS101.01)","230","教学中心302","01111111100000000000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =0*unitCount+0;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =0*unitCount+1;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:1948,name:"赵登吉",lab:false},{id:9429893,name:"耿浩",lab:false}];
+                var actTeachers = [{id:9429893,name:"耿浩",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"2586(CS101.01)","算法与数据结构(CS101.01)","230","教学中心302","01111111100000000000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =2*unitCount+0;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =2*unitCount+1;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:1326386,name:"徐昊",lab:false}];
+                var actTeachers = [{id:1326386,name:"徐昊",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"4736(103279)","风险、改进与验证(103279)","244","生命学院A106","00000000000110000000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =6*unitCount+1;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+2;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+3;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+4;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+5;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+6;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+7;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+8;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:1326386,name:"徐昊",lab:false}];
+                var actTeachers = [{id:1426,name:"周昊天",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"4736(103279)","风险、改进与验证(103279)","244","生命学院A106","00000001111000000000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =6*unitCount+1;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+2;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+3;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+4;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:1326386,name:"徐昊",lab:false}];
+                var actTeachers = [{id:1500715,name:"江智浩",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"4736(103279)","风险、改进与验证(103279)","244","生命学院A106","00000001111000000000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =6*unitCount+5;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+6;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+7;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+8;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:6471848,name:"冯继成",lab:false}];
+                var actTeachers = [{id:6471848,name:"冯继成",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"4723(103079)","气溶胶科学与技术(103079)","494","物质学院 1-401","01111111111111111000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =0*unitCount+2;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =0*unitCount+3;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:1949,name:"Edna Hu",lab:false}];
+                var actTeachers = [{id:1949,name:"Edna Hu",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"2744(103271)","医疗器械合规管理(103271)","244","生命学院A106","00010010000000000000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =5*unitCount+1;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =5*unitCount+2;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =5*unitCount+3;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =5*unitCount+4;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =5*unitCount+5;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =5*unitCount+6;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =5*unitCount+7;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =5*unitCount+8;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:1949,name:"Edna Hu",lab:false}];
+                var actTeachers = [{id:1949,name:"Edna Hu",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"2744(103271)","医疗器械合规管理(103271)","244","生命学院A106","00110000000000000000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =6*unitCount+1;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+2;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+3;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+4;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+5;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+6;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+7;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =6*unitCount+8;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:8707055,name:"涂栋栋",lab:false}];
+                var actTeachers = [{id:8707055,name:"涂栋栋",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"5238(GEHA1136.01)","史前中国的技术与社会(GEHA1136.01)","254","创管学院106","01111111111111111000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =0*unitCount+9;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =0*unitCount+10;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:8389,name:"马贵军",lab:false}];
+                var actTeachers = [{id:8389,name:"马贵军",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"2665(CHEM1585.01)","催化原理基础(CHEM1585.01)","260","物质学院 1-105","01111111111111111000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =3*unitCount+4;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =3*unitCount+5;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:310082,name:"邹新波",lab:false}];
+                var actTeachers = [{id:310082,name:"邹新波",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"1001(EE111.01)","电路基础(EE111.01)","222","信息学院1D-108","01111111111111111000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =1*unitCount+0;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =1*unitCount+1;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:310082,name:"邹新波",lab:false}];
+                var actTeachers = [{id:310082,name:"邹新波",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"1001(EE111.01)","电路基础(EE111.01)","222","信息学院1D-108","01111111111111111000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =3*unitCount+0;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =3*unitCount+1;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:102,name:"肖柳青",lab:false}];
+                var actTeachers = [{id:102,name:"肖柳青",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"3705(MATH1311.01)","数学建模(MATH1311.01)","236","教学中心404","01111111111111111000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =3*unitCount+6;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =3*unitCount+7;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =3*unitCount+8;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:9766298,name:"汤维维",lab:false}];
+                var actTeachers = [{id:9766298,name:"汤维维",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"5705(CLGE1001.01)","科学家的社会影响力与表达模式(CLGE1001.01)","258","创管学院205","01111111111111111000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =1*unitCount+6;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =1*unitCount+7;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:2092,name:"缪晓东",lab:false}];
+                var actTeachers = [{id:2092,name:"缪晓东",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"2006(GE1001.01)","现代木工设计及实践(GE1001.01)","102","学生科创中心105 - 木工教室","01111111100000000000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =0*unitCount+4;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =0*unitCount+5;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =0*unitCount+6;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =0*unitCount+7;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                var teachers = [{id:934,name:"杨波",lab:false}];
+                var actTeachers = [{id:934,name:"杨波",lab:false}];
+                var assistant = _.filter(actTeachers, function(actTeacher) {
+                    return (_.where(teachers, {id:actTeacher.id,name:actTeacher.name,lab:actTeacher.lab}).length == 0) && (actTeacher.lab == true);
+                });
+                var assistantName = "";
+                if (assistant.length > 0) {
+                    assistantName = assistant[0].name;
+                    actTeachers = _.reject(actTeachers, function(actTeacher) {
+                        return _.where(assistant, {id:actTeacher.id}).length > 0;
+                    });
+                }
+                var actTeacherId = [];
+                var actTeacherName = [];
+                for (var i = 0; i < actTeachers.length; i++) {
+                    actTeacherId.push(actTeachers[i].id);
+                    actTeacherName.push(actTeachers[i].name);
+                }
+                    activity = new TaskActivity(actTeacherId.join(','),actTeacherName.join(','),"1468(103095)","计算催化(103095)","495","物质学院 1-501","01111111111111111000000000000000000000000000000000000",null,null,assistantName,"");
+                    index =4*unitCount+4;
+                    table0.activities[index][table0.activities[index].length]=activity;
+                    index =4*unitCount+5;
+                    table0.activities[index][table0.activities[index].length]=activity;
+            table0.marshalTable(2,1,18);
+            fillTable(table0,7,13,0);
+        </script>
+                       <br>
+         
+        <strong>课程列表:</strong>
+        <div class="grid">
+        
+        
+        <table id="grid12042826911" class="gridtable">
+        <thead class="gridhead">
+        
+        
+        <tr>
+        <th width="10%">序号</th>
+        <th width="15%">课程代码</th>
+        <th width="15%">课程名称</th>
+        <th width="10%">学分</th>
+        <th width="10%">课程序号</th>
+        <th width="15%">教师</th>
+        <th width="15%">备注</th>
+        <th width="6%">附件</th>
+        </tr>
+        
+        </thead>
+        
+        <tbody id="grid12042826911_data"><tr class="griddata-even">		<td>1</td>
+        <td>CHEM1585</td><td>催化原理基础</td><td>2</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=38626" onclick="return bg.Go(this,null)" title="查看课程安排">CHEM1585.01</a>
+        </td><td>马贵军</td><td>			
+        
+        </td><td></td></tr><tr class="griddata-odd ">		<td>2</td>
+        <td>CHEM2116</td><td>气溶胶科学与技术</td><td>2</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=39046" onclick="return bg.Go(this,null)" title="查看课程安排">103079</a>
+        </td><td>冯继成</td><td>			
+        
+        </td><td></td></tr><tr class="griddata-even ">		<td>3</td>
+        <td>CHEM2261</td><td>计算催化</td><td>2</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=39054" onclick="return bg.Go(this,null)" title="查看课程安排">103095</a>
+        </td><td>杨波</td><td>			
+        
+        </td><td></td></tr><tr class="griddata-odd ">		<td>4</td>
+        <td>CLGE1001</td><td>科学家的社会影响力与表达模式</td><td>2</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=38780" onclick="return bg.Go(this,null)" title="查看课程安排">CLGE1001.01</a>
+        </td><td>汤维维</td><td>			
+        
+        </td><td></td></tr><tr class="griddata-even  ">		<td>5</td>
+        <td>CS101</td><td>算法与数据结构</td><td>4</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=36630" onclick="return bg.Go(this,null)" title="查看课程安排">CS101.01</a>
+        </td><td>赵登吉,耿浩</td><td>			
+        
+        </td><td></td></tr><tr class="griddata-odd">		<td>6</td>
+        <td>EE111</td><td>电路基础</td><td>4</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=36474" onclick="return bg.Go(this,null)" title="查看课程安排">EE111.01</a>
+        </td><td>邹新波</td><td>			
+        
+        </td><td></td></tr><tr class="griddata-even">		<td>7</td>
+        <td>GE1001</td><td>现代木工设计及实践</td><td>2</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=38781" onclick="return bg.Go(this,null)" title="查看课程安排">GE1001.01</a>
+        </td><td>缪晓东</td><td>			
+        
+        </td><td></td></tr><tr class="griddata-odd">		<td>8</td>
+        <td>GEHA1136</td><td>史前中国的技术与社会</td><td>2</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=37484" onclick="return bg.Go(this,null)" title="查看课程安排">GEHA1136.01</a>
+        </td><td>涂栋栋</td><td>			
+        
+        </td><td></td></tr><tr class="griddata-even">		<td>9</td>
+        <td>MATH1311</td><td>数学建模</td><td>3</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=38475" onclick="return bg.Go(this,null)" title="查看课程安排">MATH1311.01</a>
+        </td><td>肖柳青</td><td>			
+        
+        </td><td></td></tr><tr class="griddata-odd">		<td>10</td>
+        <td>QMS2205</td><td>风险、改进与验证</td><td>3</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=39034" onclick="return bg.Go(this,null)" title="查看课程安排">103279</a>
+        </td><td>徐昊</td><td>			
+        
+        </td><td></td></tr><tr class="griddata-even">		<td>11</td>
+        <td>QMS2301</td><td>医疗器械合规管理</td><td>2</td><td>			<a href="/eams/courseTableForStd!taskTable.action?lesson.id=39033" onclick="return bg.Go(this,null)" title="查看课程安排">103271</a>
+        </td><td>Edna Hu</td><td>			
+        
+        </td><td></td></tr></tbody>
+        </table>
+        </div>
+        <script type="text/javascript">
+          var clearCheckbox_grid12042826911 = function() {
+            jQuery("#grid12042826911").find(".box:checkbox").removeProp("checked");
+            jQuery("#grid12042826911").find(".gridselect-top :checkbox").removeProp("checked");
+            return true;
+          }
+          
+          page_grid12042826911 = bg.page("/eams/courseTableForStd!courseTable.action","");
+          {
+            var _paramstring = 'ignoreHead=1&setting.kind=std&startWeek=&semester.id=202&ids=4375&tutorRedirectstudentId=4375';
+            var _params = _paramstring.split('&');
+            for (var i = 0; i < _params.length; i++) {
+              _params[i] = decodeURIComponent(_params[i]);
+            }
+            _paramstring = _params.join('&');
+            page_grid12042826911.target("",'grid12042826911').action("/eams/courseTableForStd!courseTable.action").addParams(_paramstring).orderBy("null");
+          }
+          bg.ui.grid.init('grid12042826911',page_grid12042826911);
+        </script>
+                   <br>
+                       
+                   <br>
+        </div>
+        
+                </td>
+            </tr>
+        </tbody></table>
+        <script language="JavaScript">
+            var form = document.courseTableForm;
+               function searchTable(){
+                   if(jQuery("#courseTableType").val()=="std"){
+                       bg.form.addInput(form,"ids","4375");
+                   }else{
+                       bg.form.addInput(form,"ids","");
+                   }
+                   bg.form.addInput(form,"tutorRedirectstudentId","4375");
+                   bg.form.submit(form,"courseTableForStd!courseTable.action","contentDiv");
+               }
+               
+            function confirmCourseTable(){
+                if(confirm("课表是否确认无误?")){
+                    form.target="main";
+                    bg.form.addInput(form,"courseTableCheckId","")
+                      bg.form.submit(form,"courseTableForStd!confirmCourseTable.action");
+                      form.target="contentDiv";
+                  }
+            }
+         </script>
+        <p>
+            周二3 4
+
+        </p>
+        
+        <tbody><tr><td>BIO1021.03</td><td>生物化学I实验</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=1051&quot;,&quot;_blank&quot;);">康宇佳</a></td><td>2-13 生命学院A409</td><td>30/30</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38392,ele:this,type:''})"></a></td></tr><tr><td>BIO1061.01</td><td>细胞信号转导</td><td>2</td><td><a href="http://slst.shanghaitech.edu.cn/zz/main.htm" title="教师简介查看" target="_blank">周智</a></td><td>1-8 生命学院A113<br>1-8 生命学院A113</td><td>27/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38126,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>BIO1065.01</td><td>生物生理代谢</td><td>3</td><td><a href="http://slst.shanghaitech.edu.cn/hsy/main.htm" title="教师简介查看" target="_blank">洪诗雅</a></td><td>1-15单 生命学院A112<br>1-16 生命学院A112</td><td>10/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38292,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>BME1302.01</td><td>影像解剖学</td><td>3</td><td><a href="https://bme.shanghaitech.edu.cn/2021/0326/c8204a67951/page.htm" title="教师简介查看" target="_blank">罗宗化</a></td><td>1-15单 信息学院1B-108<br>1-16 信息学院1B-108</td><td>7/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38408,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102890</td><td>神经信号处理与数据分析</td><td>3</td><td><a href="https://bme.shanghaitech.edu.cn/2021/0326/c8204a502240/page.htm" title="教师简介查看" target="_blank">李远宁</a></td><td>1-16 信息学院1A-104<br>1-15单 信息学院1A-104</td><td>24/90</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39025,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>103105</td><td>物理有机化学</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0925/c2349a51320/page.htm" title="教师简介查看" target="_blank">甄家劲</a></td><td>1-16 物质学院 1-205</td><td>18/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39059,ele:this,type:''})"></a></td></tr><tr><td>CS150A.01</td><td>数据库</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53879/page.htm" title="教师简介查看" target="_blank">孙露</a></td><td>1-16 教学中心302<br>1-16 教学中心302</td><td>108/150</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 36673,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102849</td><td>计算机体系结构II</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53875/page.htm" title="教师简介查看" target="_blank">王春东</a></td><td>13-16 虚拟教室002<br>1-12 信息学院1D-107<br>13-16 虚拟教室002<br>1-12 信息学院1D-107</td><td>66/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38992,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102851</td><td>算法设计与分析</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a62201/page.htm" title="教师简介查看" target="_blank">李权</a></td><td>1-16 教学中心201<br>1-16 教学中心201</td><td>171/173</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38994,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102861</td><td>智能网络</td><td>3</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a71553/page.htm" title="教师简介查看" target="_blank">毛奕婕</a></td><td>1-12 信息学院1B-106<br>1-12 信息学院1B-106</td><td>14/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39004,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>EE160.02</td><td>控制原理</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2018/0502/c7497a53817/page.htm" title="教师简介查看" target="_blank">陆林燕</a>,<a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53871/page.htm" title="教师简介查看" target="_blank">汪阳</a></td><td>1-13,16 信息学院1D-106<br>1-13,16 信息学院1D-106</td><td>29/32</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 36759,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>EE160.01</td><td>控制原理</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2018/0502/c7497a53817/page.htm" title="教师简介查看" target="_blank">陆林燕</a>,<a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53871/page.htm" title="教师简介查看" target="_blank">汪阳</a></td><td>1-13,16 信息学院1D-106<br>1-13,16 信息学院1D-106</td><td>31/32</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 36486,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102866</td><td>微纳器件工艺基础</td><td>3</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53885/page.htm" title="教师简介查看" target="_blank">任豪</a></td><td>1-12 信息学院1D-104<br>1-12 信息学院1D-104</td><td>52/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39009,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MATH1223.01</td><td>实分析</td><td>4</td><td><a href="https://ims.shanghaitech.edu.cn/2021/0827/c4741a71490/page.htm" title="教师简介查看" target="_blank">岳海天</a></td><td>1-16 教学中心404<br>1-16 教学中心404</td><td>16/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38510,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MSE1321.01</td><td>材料科学基础I：晶体结构和缺陷</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a51273/page.htm" title="教师简介查看" target="_blank">刘巍</a></td><td>1-16 物质学院 1-109</td><td>9/40</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38650,ele:this,type:''})"></a></td></tr><tr><td>PHYS1302.01</td><td>理论力学</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a51261/page.htm" title="教师简介查看" target="_blank">郭艳峰</a></td><td>1-15单 物质学院 1-503<br>1-16 物质学院 1-503</td><td>40/60</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38561,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>PHYS1521.01</td><td>量子力学I</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0519/c4986a27061/page.htm" title="教师简介查看" target="_blank">韩福祥</a></td><td>1-16 物质学院 1-501</td><td>48/70</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38646,ele:this,type:''})"></a></td></tr><tr><td>PHYS1541.01</td><td>量子力学导论</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a51272/page.htm" title="教师简介查看" target="_blank">刘小井</a></td><td>1-16 物质学院 1-111</td><td>6/20</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38631,ele:this,type:''})"></a></td></tr></tbody>
+        
+        <p>
+            周三3 4
+
+        </p>
+        <tbody><tr><td>BIO1066.01</td><td>血管生物学</td><td>3</td><td><a href="http://slst.shanghaitech.edu.cn/zh/main.htm" title="教师简介查看" target="_blank">张辉</a></td><td>2-16双 生命学院A111<br>1-16 生命学院A111</td><td>8/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38277,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>103290</td><td>合成生物学</td><td>3</td><td><a href="http://slst.shanghaitech.edu.cn/Hisashi/main.htm" title="教师简介查看" target="_blank">Hisashi Tadakuma</a></td><td>1-16 生命学院A107<br>2-16双 生命学院A107</td><td>11/600</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39040,ele:this,type:''})"></a></td></tr><tr><td>102893</td><td>磁共振成像原理</td><td>4</td><td><a href="https://bme.shanghaitech.edu.cn/2021/0326/c8204a62061/page.htm" title="教师简介查看" target="_blank">齐海坤</a></td><td>1-16 信息学院1B-110<br>1-16 信息学院1B-110</td><td>26/100</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39028,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>103119</td><td>高等有机化学</td><td>4</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a56865/page.htm" title="教师简介查看" target="_blank">梁广鑫</a></td><td>1-16 物质学院 1-503<br>1-16 物质学院 1-503</td><td>61/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38974,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>103129</td><td>固体化学</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2021/0824/c2349a71152/page.htm" title="教师简介查看" target="_blank">赵英博</a></td><td>1-16 物质学院 1-201</td><td>26/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38981,ele:this,type:''})"></a></td></tr><tr><td>CS181.01</td><td>人工智能I</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53877/page.htm" title="教师简介查看" target="_blank">屠可伟</a></td><td>1-16 教学中心303<br>1-16 教学中心303</td><td>120/120</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 36595,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102853</td><td>密码学</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53860/page.htm" title="教师简介查看" target="_blank">张良峰</a></td><td>13-16 虚拟教室001<br>1-12 信息学院1D-106<br>1-12 信息学院1D-106<br>13-16 虚拟教室001</td><td>46/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38996,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102854</td><td>数字图像处理</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a56875/page.htm" title="教师简介查看" target="_blank">任无畏</a></td><td>1-12 教学中心203<br>13-16 虚拟教室002<br>1-12 教学中心203<br>13-16 虚拟教室002</td><td>73/83</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38997,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102870</td><td>电磁传感与检测</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53864/page.htm" title="教师简介查看" target="_blank">叶朝锋</a></td><td>1-16 信息学院1A-108<br>1-16 信息学院1A-108</td><td>13/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39012,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102873</td><td>无线通信</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53853/page.htm" title="教师简介查看" target="_blank">周勇</a></td><td>1-16 信息学院1D-104<br>1-16 信息学院1D-104</td><td>35/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39015,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEHA1138.01</td><td>初级日语I</td><td>2</td><td><a href="https://ge.shanghaitech.edu.cn/2020/0910/c847a78521/page.htm" title="教师简介查看" target="_blank">Kaoru Amino</a></td><td>1-16 创管学院106</td><td>30/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38775,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MATH1233.01</td><td>拓扑学导论</td><td>3</td><td><a href="http://ims.shanghaitech.edu.cn/2018/1110/c4741a35982/page.htm" title="教师简介查看" target="_blank">涂君武</a></td><td>1-15单 教学中心405<br>1-16 教学中心405</td><td>21/40</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38522,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MATH1315.01</td><td>偏微分方程I</td><td>3</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=6562438&quot;,&quot;_blank&quot;);">蒋诗晓</a></td><td>1-15单 创管学院214<br>1-16 创管学院214</td><td>17/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38511,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MSE1581.01</td><td>材料分析方法</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a51293/page.htm" title="教师简介查看" target="_blank">马延航</a></td><td>1-16 物质学院 1-109</td><td>11/20</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38628,ele:this,type:''})"></a></td></tr><tr><td>PHYS1522.01</td><td>固体物理II</td><td>4</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=2359702&quot;,&quot;_blank&quot;);">张石磊</a></td><td>1-16 物质学院 1-111<br>1-16 物质学院 1-111</td><td>11/40</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38637,ele:this,type:''})"></a></td></tr><tr><td>103134</td><td>扫描探针显微镜原理与应用</td><td>2</td><td><a href="https://spst.shanghaitech.edu.cn/2021/0521/c2349a64300/page.htm" title="教师简介查看" target="_blank">王文波</a></td><td>1-16 物质学院 1-203</td><td>21/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38991,ele:this,type:'ELECTION'})">选课</a></td></tr></tbody>
+        <p>
+            周四3 4
+
+        </p>        
+        <tbody><tr><td>BIO1061.01</td><td>细胞信号转导</td><td>2</td><td><a href="http://slst.shanghaitech.edu.cn/zz/main.htm" title="教师简介查看" target="_blank">周智</a></td><td>1-8 生命学院A113<br>1-8 生命学院A113</td><td>27/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38126,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>BIO1065.01</td><td>生物生理代谢</td><td>3</td><td><a href="http://slst.shanghaitech.edu.cn/hsy/main.htm" title="教师简介查看" target="_blank">洪诗雅</a></td><td>1-15单 生命学院A112<br>1-16 生命学院A112</td><td>10/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38292,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>BME1302.01</td><td>影像解剖学</td><td>3</td><td><a href="https://bme.shanghaitech.edu.cn/2021/0326/c8204a67951/page.htm" title="教师简介查看" target="_blank">罗宗化</a></td><td>1-15单 信息学院1B-108<br>1-16 信息学院1B-108</td><td>7/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38408,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102890</td><td>神经信号处理与数据分析</td><td>3</td><td><a href="https://bme.shanghaitech.edu.cn/2021/0326/c8204a502240/page.htm" title="教师简介查看" target="_blank">李远宁</a></td><td>1-16 信息学院1A-104<br>1-15单 信息学院1A-104</td><td>24/90</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39025,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>CS150A.01</td><td>数据库</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53879/page.htm" title="教师简介查看" target="_blank">孙露</a></td><td>1-16 教学中心302<br>1-16 教学中心302</td><td>108/150</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 36673,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102849</td><td>计算机体系结构II</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53875/page.htm" title="教师简介查看" target="_blank">王春东</a></td><td>13-16 虚拟教室002<br>1-12 信息学院1D-107<br>13-16 虚拟教室002<br>1-12 信息学院1D-107</td><td>66/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38992,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102851</td><td>算法设计与分析</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a62201/page.htm" title="教师简介查看" target="_blank">李权</a></td><td>1-16 教学中心201<br>1-16 教学中心201</td><td>171/173</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38994,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102861</td><td>智能网络</td><td>3</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a71553/page.htm" title="教师简介查看" target="_blank">毛奕婕</a></td><td>1-12 信息学院1B-106<br>1-12 信息学院1B-106</td><td>14/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39004,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>EE160.02</td><td>控制原理</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2018/0502/c7497a53817/page.htm" title="教师简介查看" target="_blank">陆林燕</a>,<a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53871/page.htm" title="教师简介查看" target="_blank">汪阳</a></td><td>1-13,16 信息学院1D-106<br>1-13,16 信息学院1D-106</td><td>29/32</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 36759,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>EE160.01</td><td>控制原理</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2018/0502/c7497a53817/page.htm" title="教师简介查看" target="_blank">陆林燕</a>,<a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53871/page.htm" title="教师简介查看" target="_blank">汪阳</a></td><td>1-13,16 信息学院1D-106<br>1-13,16 信息学院1D-106</td><td>31/32</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 36486,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102866</td><td>微纳器件工艺基础</td><td>3</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53885/page.htm" title="教师简介查看" target="_blank">任豪</a></td><td>1-12 信息学院1D-104<br>1-12 信息学院1D-104</td><td>52/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39009,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GESS1029.01</td><td>托克维尔《论美国的民主》精读</td><td>2</td><td><a href="http://ge.shanghaitech.edu.cn/2018/0109/c1336a27223/page.htm" title="教师简介查看" target="_blank">周林刚</a></td><td>1-16 教学中心405</td><td>25/25</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 37114,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MATH1223.01</td><td>实分析</td><td>4</td><td><a href="https://ims.shanghaitech.edu.cn/2021/0827/c4741a71490/page.htm" title="教师简介查看" target="_blank">岳海天</a></td><td>1-16 教学中心404<br>1-16 教学中心404</td><td>16/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38510,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MGMT1301.01</td><td>生产运作管理</td><td>3</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=9977478&quot;,&quot;_blank&quot;);">田旭晗</a></td><td>1-16 创管学院106</td><td>11/20</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38672,ele:this,type:''})"></a></td></tr><tr><td>MSE1520.01</td><td>高分子物理（含实验）</td><td>4</td><td><a href="http://spst.shanghaitech.edu.cn/2018/0301/c3659a28250/page.htm" title="教师简介查看" target="_blank">席红霞</a>,<a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a17387/page.htm" title="教师简介查看" target="_blank">凌盛杰</a></td><td>1-16 物质学院 1-105</td><td>9/22</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38654,ele:this,type:''})"></a></td></tr><tr><td>103123</td><td>荧光光谱与显微成像</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/1029/c2349a57141/page.htm" title="教师简介查看" target="_blank">沈晓钦</a></td><td>1-16 物质学院 1-205</td><td>19/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38976,ele:this,type:''})"></a></td></tr><tr><td>PHYS1302.01</td><td>理论力学</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a51261/page.htm" title="教师简介查看" target="_blank">郭艳峰</a></td><td>1-15单 物质学院 1-503<br>1-16 物质学院 1-503</td><td>40/60</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38561,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>PHYS1503.01</td><td>统计物理</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/1029/c2349a44756/page.htm" title="教师简介查看" target="_blank">翟晓芳</a></td><td>1-16 物质学院 1-501</td><td>41/60</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38608,ele:this,type:''})"></a></td></tr><tr><td>103106</td><td>光子科学导论</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c4863a65637/page.htm" title="教师简介查看" target="_blank">刘志</a></td><td>1-16 物质学院 4-122</td><td>75/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39060,ele:this,type:''})"></a></td></tr></tbody>
+        <p>
+            周五3 4
+
+        </p>         
+        <tbody><tr><td>BIO1066.01</td><td>血管生物学</td><td>3</td><td><a href="http://slst.shanghaitech.edu.cn/zh/main.htm" title="教师简介查看" target="_blank">张辉</a></td><td>2-16双 生命学院A111<br>1-16 生命学院A111</td><td>8/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38277,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102893</td><td>磁共振成像原理</td><td>4</td><td><a href="https://bme.shanghaitech.edu.cn/2021/0326/c8204a62061/page.htm" title="教师简介查看" target="_blank">齐海坤</a></td><td>1-16 信息学院1B-110<br>1-16 信息学院1B-110</td><td>26/100</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39028,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>103119</td><td>高等有机化学</td><td>4</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a56865/page.htm" title="教师简介查看" target="_blank">梁广鑫</a></td><td>1-16 物质学院 1-503<br>1-16 物质学院 1-503</td><td>61/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38974,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>CS181.01</td><td>人工智能I</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53877/page.htm" title="教师简介查看" target="_blank">屠可伟</a></td><td>1-16 教学中心303<br>1-16 教学中心303</td><td>120/120</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 36595,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102853</td><td>密码学</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53860/page.htm" title="教师简介查看" target="_blank">张良峰</a></td><td>13-16 虚拟教室001<br>1-12 信息学院1D-106<br>1-12 信息学院1D-106<br>13-16 虚拟教室001</td><td>46/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38996,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102854</td><td>数字图像处理</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a56875/page.htm" title="教师简介查看" target="_blank">任无畏</a></td><td>1-12 教学中心203<br>13-16 虚拟教室002<br>1-12 教学中心203<br>13-16 虚拟教室002</td><td>73/83</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38997,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102870</td><td>电磁传感与检测</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53864/page.htm" title="教师简介查看" target="_blank">叶朝锋</a></td><td>1-16 信息学院1A-108<br>1-16 信息学院1A-108</td><td>13/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39012,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102873</td><td>无线通信</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53853/page.htm" title="教师简介查看" target="_blank">周勇</a></td><td>1-16 信息学院1D-104<br>1-16 信息学院1D-104</td><td>35/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39015,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MATH1233.01</td><td>拓扑学导论</td><td>3</td><td><a href="http://ims.shanghaitech.edu.cn/2018/1110/c4741a35982/page.htm" title="教师简介查看" target="_blank">涂君武</a></td><td>1-15单 教学中心405<br>1-16 教学中心405</td><td>21/40</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38522,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MATH1315.01</td><td>偏微分方程I</td><td>3</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=6562438&quot;,&quot;_blank&quot;);">蒋诗晓</a></td><td>1-15单 创管学院214<br>1-16 创管学院214</td><td>17/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38511,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MSE1309.01</td><td>纳米材料</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a51283/page.htm" title="教师简介查看" target="_blank">李涛</a></td><td>1-16 物质学院 1-109</td><td>12/20</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38600,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>103121</td><td>生物材料</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/1029/c5354a45427/page.htm" title="教师简介查看" target="_blank">郑宜君</a></td><td>1-16 物质学院 1-203</td><td>31/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38975,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>103102</td><td>凝聚态拓扑物理</td><td>2</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=2359702&quot;,&quot;_blank&quot;);">张石磊</a></td><td>1-16 物质学院 1-301</td><td>39/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39056,ele:this,type:'ELECTION'})">选课</a></td></tr></tbody>
+        <p>
+            周二5 6
+
+        </p>      
+        <tbody><tr><td>GE1001.02</td><td>现代木工设计及实践</td><td>2</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=2092&quot;,&quot;_blank&quot;);">缪晓东</a></td><td>1-8 学生科创中心105 - 木工教室</td><td>20/20</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38783,ele:this,type:''})"></a></td></tr><tr><td>BIO1024.01</td><td>分子生物学实验</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=1049&quot;,&quot;_blank&quot;);">杨静</a></td><td>2-13 生命学院A409</td><td>19/30</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38198,ele:this,type:''})"></a></td></tr><tr><td>BIO1042.01</td><td>经典模式生物学</td><td>2</td><td><a href="http://slst.shanghaitech.edu.cn/txj/main.htm" title="教师简介查看" target="_blank">童夏静</a>,<a href="https://slst.shanghaitech.edu.cn/qyc/main.htm" title="教师简介查看" target="_blank">齐瀛川</a></td><td>1,4-5,11-14,16 生命学院A109<br>2-3,6-10,15 生命学院A109</td><td>29/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38256,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>BIO1044.01</td><td>RNA生物学</td><td>3</td><td><a href="http://slst.shanghaitech.edu.cn/lrj/main.htm" title="教师简介查看" target="_blank">刘如娟</a></td><td>1-16 生命学院A106</td><td>11/30</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38398,ele:this,type:''})"></a></td></tr><tr><td>103299</td><td>发现之旅-细胞生物学实践与创新</td><td>3</td><td><a href="http://slst.shanghaitech.edu.cn/zj/main.htm" title="教师简介查看" target="_blank">赵简</a></td><td>1-16 生命学院A107</td><td>13/600</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39041,ele:this,type:''})"></a></td></tr><tr><td>BME1069.01</td><td>生物医学统计</td><td>4</td><td><a href="http://slst.shanghaitech.edu.cn/bf/main.htm" title="教师简介查看" target="_blank">白芳</a>,<a href="https://slst.shanghaitech.edu.cn/cht/main.htm" title="教师简介查看" target="_blank">陈洪涛</a></td><td>1-8 生命学院A113<br>1-8 生命学院A113<br>9-16 生命学院A113<br>9-16 生命学院A113</td><td>6/30</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38238,ele:this,type:''})"></a></td></tr><tr><td>102892</td><td>医学图像处理与分析</td><td>4</td><td><a href="https://bme.shanghaitech.edu.cn/2021/0326/c8204a62068/page.htm" title="教师简介查看" target="_blank">张雷</a></td><td>1-16 信息学院1D-108<br>1-16 信息学院1D-108</td><td>72/100</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39027,ele:this,type:''})"></a></td></tr><tr><td>103086</td><td>高级合成实验</td><td>3</td><td></td><td>1-14 物质学院 2-302<br>1-14 物质学院 2-302</td><td>8/12</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39051,ele:this,type:''})"></a></td></tr><tr><td>CS182.01</td><td>机器学习引论</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53857/page.htm" title="教师简介查看" target="_blank">赵子平</a></td><td>1-16 教学中心303<br>1-16 教学中心303</td><td>80/80</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 36682,ele:this,type:''})"></a></td></tr><tr><td>102855</td><td>计算机图形学II</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0914/c7499a55628/page.htm" title="教师简介查看" target="_blank">马月昕</a></td><td>1-16 教学中心203<br>1-16 教学中心203</td><td>48/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38998,ele:this,type:''})"></a></td></tr><tr><td>EE130P.01</td><td>电磁学课程设计</td><td>2</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53872/page.htm" title="教师简介查看" target="_blank">王雄</a>,<a href="https://sist.shanghaitech.edu.cn/2018/0502/c7497a53818/page.htm" title="教师简介查看" target="_blank">李娟</a></td><td>2-16 信息学院1D-102</td><td>12/20</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 36565,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102869</td><td>天线理论与设计</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53892/page.htm" title="教师简介查看" target="_blank">林丰涵</a></td><td>1-16 信息学院2-515<br>1-16 信息学院2-515</td><td>18/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39011,ele:this,type:''})"></a></td></tr><tr><td>FINA1310.01</td><td>财务分析原理</td><td>2</td><td><a href="http://sem.shanghaitech.edu.cn/2019/0221/c5000a39246/page.htm" title="教师简介查看" target="_blank">贾建军</a></td><td>1-16 创管学院202</td><td>15/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38680,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GE1002.01</td><td>智造学术X</td><td>2</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=2093&quot;,&quot;_blank&quot;);">丁峻峰</a></td><td>1-8 学生科创中心212</td><td>12/16</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38742,ele:this,type:''})"></a></td></tr><tr><td>GEHA1055.01</td><td>《春秋左传》精读</td><td>2</td><td><a href="https://ge.shanghaitech.edu.cn/2017/0704/c847a67773/page.htm" title="教师简介查看" target="_blank">刘勋</a></td><td>1-16 教学中心403</td><td>29/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 36826,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>MATH1316.01</td><td>微分几何</td><td>3</td><td><a href="http://ims.shanghaitech.edu.cn/2018/1110/c4741a35989/page.htm" title="教师简介查看" target="_blank">Yosuke Imagi</a></td><td>1-16 数学所 506<br>2-16双 数学所 506</td><td>2/15</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38512,ele:this,type:''})"></a></td></tr><tr><td>MSE1515.01</td><td>材料科学实验（下）</td><td>2</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a51283/page.htm" title="教师简介查看" target="_blank">李涛</a>,<a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a51303/page.htm" title="教师简介查看" target="_blank">薛加民</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=991&quot;,&quot;_blank&quot;);">余娜</a>,<a href="http://spst.shanghaitech.edu.cn/2018/0301/c3659a28250/page.htm" title="教师简介查看" target="_blank">席红霞</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=1053&quot;,&quot;_blank&quot;);">刘华</a>,<a href="https://spst.shanghaitech.edu.cn/2018/0328/c3661a28248/page.htm" title="教师简介查看" target="_blank">唐永军</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=8402&quot;,&quot;_blank&quot;);">王鑫艳</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=4002388&quot;,&quot;_blank&quot;);">熊麟</a></td><td>9 物质学院 8-B102<br>10-11 物质学院3-104<br>12-13 物质学院6-B106<br>14-15 物质学院7-101<br>16 物质学院2-504<br>1-16 物质学院 2-207<br>1-4 物质学院 2-214<br>5 物质学院2-305C<br>6-7 物质学院 8-B102<br>8 物质学院 2-214</td><td>10/15</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38629,ele:this,type:''})"></a></td></tr><tr><td>PHYS1311.02</td><td>光学实验</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=10191398&quot;,&quot;_blank&quot;);">王涵</a></td><td>1-16 物质学院 4-305</td><td>22/23</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38818,ele:this,type:''})"></a></td></tr><tr><td>PHYS1553.01</td><td>激光原理技术</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c4860a563654/page.htm" title="教师简介查看" target="_blank">刘伟民</a></td><td>1-16 物质学院 1-105</td><td>15/40</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38574,ele:this,type:''})"></a></td></tr><tr><td>103083</td><td>光电子技术</td><td>2</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a51316/page.htm" title="教师简介查看" target="_blank">颜世超</a></td><td>1-16 物质学院 1-401</td><td>37/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39049,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>SEMI1301.01</td><td>创新科学：认知原理与市场应用</td><td>2</td><td><a href="http://sem.shanghaitech.edu.cn/2018/0509/c3525a26820/page.htm" title="教师简介查看" target="_blank">周昊天</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=8069642&quot;,&quot;_blank&quot;);">谢文心</a></td><td>1-5 创管学院501<br>6-11 创管学院501</td><td>14/20</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38673,ele:this,type:''})"></a></td></tr><tr><td>102882</td><td>分布式优化与智能</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a264268/page.htm" title="教师简介查看" target="_blank">文鼎柱</a></td><td>13-16 虚拟教室001<br>1-12 信息学院1A-104<br>13-16 虚拟教室001<br>1-12 信息学院1A-104</td><td>9/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39023,ele:this,type:''})"></a></td></tr></tbody>
+        <p>
+            周三5 6
+
+        </p>          
+        <tbody><tr><td>ARTS1604.01</td><td>管风琴欣赏与体验</td><td>2</td><td><a href="http://sca.shanghaitech.edu.cn/2018/0711/c4173a43170/page.htm" title="教师简介查看" target="_blank">Mimi Klemettinen</a></td><td>1-8 学生中心 心灵之光205</td><td>16/16</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38743,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>BIO1024.02</td><td>分子生物学实验</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=1049&quot;,&quot;_blank&quot;);">杨静</a></td><td>2-13 生命学院A409</td><td>30/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38393,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>BIO1041.01</td><td>表观遗传学</td><td>2</td><td><a href="http://slst.shanghaitech.edu.cn/lxj/main.htm" title="教师简介查看" target="_blank">李夏军</a></td><td>1-8 生命学院A112<br>1-8 生命学院A112</td><td>8/30</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38397,ele:this,type:''})"></a></td></tr><tr><td>103110</td><td>高等无机化学</td><td>4</td><td><a href="https://spst.shanghaitech.edu.cn/2018/1029/c2349a54947/page.htm" title="教师简介查看" target="_blank">翁祖谦</a></td><td>1-16 物质学院 1-401</td><td>40/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39062,ele:this,type:''})"></a></td></tr><tr><td>CLPE1001.01</td><td>游泳运动与健康</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=113&quot;,&quot;_blank&quot;);">黄卫</a></td><td>1-16 游泳馆</td><td>21/21</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38419,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>CLPE1001.02</td><td>游泳运动与健康</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=112&quot;,&quot;_blank&quot;);">潘黎君</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=113&quot;,&quot;_blank&quot;);">黄卫</a></td><td>1-16 游泳馆</td><td>20/21</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38420,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>CLPE1002.01</td><td>科学健身与田径运动</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=124&quot;,&quot;_blank&quot;);">李玉章</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=1461&quot;,&quot;_blank&quot;);">唐军</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=3551387&quot;,&quot;_blank&quot;);">王然</a></td><td>1-8 室外运动场<br>9-16 体育馆二楼赛艇训练区</td><td>25/25</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38431,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>CLPE1002.03</td><td>科学健身与田径运动</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=124&quot;,&quot;_blank&quot;);">李玉章</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=1461&quot;,&quot;_blank&quot;);">唐军</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=6316679&quot;,&quot;_blank&quot;);">陈超</a></td><td>1-8 室外田径场<br>9-16 体育馆B108（健身房）</td><td>24/25</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38433,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>CLPE1002.02</td><td>科学健身与田径运动</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=124&quot;,&quot;_blank&quot;);">李玉章</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=1461&quot;,&quot;_blank&quot;);">唐军</a>,<a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=3551387&quot;,&quot;_blank&quot;);">王然</a></td><td>1-8 体育馆二楼赛艇训练区<br>9-16 室外田径场</td><td>25/25</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38432,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>CS171.01</td><td>计算机图形学I</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53891/page.htm" title="教师简介查看" target="_blank">刘晓培</a></td><td>1-16 信息学院1D-107<br>1-16 信息学院1D-107</td><td>96/150</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 36548,ele:this,type:''})"></a></td></tr><tr><td>102856</td><td>计算机视觉II</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a58578/page.htm" title="教师简介查看" target="_blank">汪婧雅</a></td><td>1-12 信息学院1D-104<br>13-16 虚拟教室003<br>1-12 信息学院1D-104<br>13-16 虚拟教室003</td><td>49/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 38999,ele:this,type:''})"></a></td></tr><tr><td>EE113.01</td><td>数字集成电路I</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53896/page.htm" title="教师简介查看" target="_blank">寇煦丰</a>,<a href="https://sist.shanghaitech.edu.cn/2018/0502/c7497a53818/page.htm" title="教师简介查看" target="_blank">李娟</a></td><td>2-16 信息学院3-101-1<br>1-15单 信息学院1D-106<br>1-16 信息学院1D-106</td><td>59/60</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 36518,ele:this,type:''})"></a></td></tr><tr><td>102872</td><td>数字通信</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53869/page.htm" title="教师简介查看" target="_blank">吴幼龙</a></td><td>1-12 信息学院1B-110<br>13-16 虚拟教室002<br>13-16 虚拟教室002<br>1-12 信息学院1B-110</td><td>17/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39014,ele:this,type:''})"></a></td></tr><tr><td>GEHA1097.01</td><td>习近平新时代中国特色社会主义思想概论</td><td>2</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=7083023&quot;,&quot;_blank&quot;);">欧阳光明</a></td><td>1-16 教学中心403</td><td>41/50</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 37520,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEHA1124.01</td><td>小说阅读与批评</td><td>3</td><td><a href="https://ge.shanghaitech.edu.cn/2017/0704/c847a67774/page.htm" title="教师简介查看" target="_blank">张蕴贤</a></td><td>1-16 创管学院209</td><td>20/20</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 37081,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEHA1125.01</td><td>中国古代文学与现代风华</td><td>3</td><td><a href="https://ge.shanghaitech.edu.cn/2020/0910/c847a67780/page.htm" title="教师简介查看" target="_blank">陈娅妮</a></td><td>1-16 创管学院107</td><td>20/20</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 37092,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEHA1154.01</td><td>文学中的“空间”</td><td>3</td><td><a href="https://ge.shanghaitech.edu.cn/2020/0910/c847a68208/page.htm" title="教师简介查看" target="_blank">祁玥</a></td><td>1-16 创管学院106</td><td>20/20</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 37306,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEPE1007.01</td><td>击剑与防卫 I</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=114&quot;,&quot;_blank&quot;);">费正伟</a></td><td>1-16 会议中心一楼大厅</td><td>24/24</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38688,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEPE1009.01</td><td>健美操I</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=6296564&quot;,&quot;_blank&quot;);">孙晓姣</a></td><td>1-16 体育馆B107（健美操房）</td><td>21/24</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38689,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEPE1015.01</td><td>乒乓球 I</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=10194171&quot;,&quot;_blank&quot;);">李荣芝</a></td><td>1-16 体育馆106（乒乓球房）</td><td>24/24</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38693,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEPE1017.01</td><td>拳击与塑形 I</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=123&quot;,&quot;_blank&quot;);">张震</a></td><td>1-16 体育馆B106（拳击房）</td><td>24/24</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38695,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEPE1019.01</td><td>跆拳道 I</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=3551386&quot;,&quot;_blank&quot;);">杨鹏飞</a></td><td>1-16 体育馆104（跆拳道房）</td><td>13/24</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38696,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEPE1023.01</td><td>网球I</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=1362&quot;,&quot;_blank&quot;);">钟建荣</a></td><td>1-16 室外网球场</td><td>24/24</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38697,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEPE1030.01</td><td>足球 I</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=109&quot;,&quot;_blank&quot;);">郑鹭宾</a></td><td>1-16 室外田径场</td><td>24/24</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38705,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEPE1032.01</td><td>武术 I</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=7234404&quot;,&quot;_blank&quot;);">刘文武</a></td><td>1-16 武术房</td><td>24/24</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38706,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>GEPE1042.01</td><td>基础瑜伽I</td><td>1</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=10301970&quot;,&quot;_blank&quot;);">陆莉萍</a></td><td>1-16 体育馆103（舞蹈房）</td><td>24/24</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38709,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>103010</td><td>代数学</td><td>4</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=10169353&quot;,&quot;_blank&quot;);">段炼</a></td><td>1-16 教学中心405<br>1-16 教学中心405</td><td>4/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39030,ele:this,type:''})"></a></td></tr><tr><td>MSE1511.01</td><td>半导体材料与器件</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/1029/c2349a52137/page.htm" title="教师简介查看" target="_blank">刘灰礼</a></td><td>1-16 物质学院 1-105</td><td>6/40</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38623,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>103076</td><td>原位电子显微原理与技术</td><td>2</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=6785701&quot;,&quot;_blank&quot;);">王竹君</a></td><td>1-16 物质学院 1-205</td><td>24/1998</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39045,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>PHYS1551.01</td><td>晶体衍射学</td><td>3</td><td><a href="https://spst.shanghaitech.edu.cn/2018/0301/c2349a51266/page.htm" title="教师简介查看" target="_blank">江怀东</a></td><td>1-16 物质学院 1-111</td><td>7/20</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 38602,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102879</td><td>应用数值计算</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53893/page.htm" title="教师简介查看" target="_blank">廖奇峰</a></td><td>13-16 虚拟教室001<br>1-12 信息学院2-215<br>13-16 虚拟教室001<br>1-12 信息学院2-215</td><td>45/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39020,ele:this,type:''})"></a></td></tr><tr><td>102881</td><td>凸优化</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a59035/page.htm" title="教师简介查看" target="_blank">石野</a></td><td>1-12 教学中心301<br>13-16 虚拟教室004<br>1-12 教学中心301<br>13-16 虚拟教室004</td><td>68/71</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39022,ele:this,type:''})"></a></td></tr></tbody>
+        
+        <p>
+            周三10 11
+
+        </p>  
+        <tbody><tr><td>102857</td><td>计算影像学</td><td>4</td><td><a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53862/page.htm" title="教师简介查看" target="_blank">虞晶怡</a></td><td>1-16 信息学院1B-108<br>1-16 信息学院1B-108</td><td>16/1998</td><td><a title="" href="###" onclick="electCourseTable.tip.submit({lessonId: 39000,ele:this,type:''})"></a></td></tr><tr><td>102942</td><td>德语I</td><td>2</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=3589593&quot;,&quot;_blank&quot;);">胡凯</a></td><td>1-16 教学中心401</td><td>29/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39064,ele:this,type:'ELECTION'})">选课</a></td></tr><tr><td>102944</td><td>法语I</td><td>2</td><td><a href="##" title="教师简介查看" onclick="bg.form.submit(document.tipForm,&quot;stdElectCourse!teacherInfo.action?teacherId=3601318&quot;,&quot;_blank&quot;);">叶丽文</a></td><td>1-16 教学中心404</td><td>30/30</td><td><a title="选课" href="###" onclick="electCourseTable.tip.submit({lessonId: 39065,ele:this,type:'ELECTION'})">选课</a></td></tr></tbody>
+        <div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div><div id="messageZone" style="position: absolute; z-index: 1000; top: 0px; right: 0px; width: 55px; height: 20px; background: rgb(249, 237, 190); padding: 2px; visibility: hidden;">Loading...</div><div id="_my97DP" style="position: absolute; top: -1970px; left: -1970px;"><iframe style="width: 186px; height: 198px;" src="/eams/static/scripts/my97/My97DatePicker.htm" frameborder="0" border="0" scrolling="no"></iframe></div></body>
+</body>
+</html>

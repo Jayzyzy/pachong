@@ -1,0 +1,481 @@
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+        
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta content="width=device-width,initial-scale=0.8, minimum-scale=0.8, maximum-scale=3"
+          name="viewport"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta property="qc:admins" content="754034015366713545637571540352652"/>
+    <meta property="wb:webmaster" content="1ad39047f32b5b6b"/>
+    <title>统一身份认证</title>
+	<style>
+			*{ margin:0; padding:0;}
+			img{ border:none; max-width:100%; display: block;}
+			select,input{outline:none; border:none;}
+			ul,ol{ list-style:none;}
+			a{ text-decoration:none; }	
+			.fl{float:left;}
+			.fr{float:right;}
+			.clearfix:after{content:"."; display:block; clear:both; font-size:0; height:0; visibility:hidden;}
+			body{ font-size:12px; line-height:1.6; 
+			font-family:"Microsoft YaHei","Arial-normal","open sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+			}
+			html, body {position: relative;height: 100%;}
+		    #wrap{width: 100%;height: 100%;}
+		    /*头部*/
+		    .header{ 
+		    	width: 100%; 
+		    	height: 90px; 
+			    background:#A30008;
+			    filter:alpha(opacity=95); 
+			    opacity:0.95; 
+			    -webkit-opacity:0.95;
+			    -moz-opacity:0.95; 
+			    -khtml-opacity:0.95; 
+			    /*position: absolute;*/
+			    z-index: 9999;
+			    }
+		    .header-center{ 
+		    	width: 85%; 
+		    	margin:0 auto;
+		    	}
+		    .header-center .logo1{ margin-top: 15px;}
+		    .header-center-right{font-size:14px;}
+		    /*登录框,调整margin-left、margin-top可以改变登录框的位置*/
+		   .weblogin{
+			   	width: 328px; 
+			    height: 353px; 
+			    background: url(../authserver/custom/login/images/weblogin-bg.png); 
+			    position:absolute; 
+			    top:50%; left:50%; 
+			    margin-top: -120px; 
+			    margin-left: -164px; 
+			    z-index: 9999;
+			    }
+			.weblogin form ul{
+				width:223px;
+				margin: 0 auto;
+				margin-top:30px;
+			}
+		    .weblogin form h3{ 
+		    	width:100%; 
+		    	height: 54px; 
+		    	line-height: 54px; 
+		    	text-align: center; 
+		    	font-weight: normal; 
+		    	font-size: 20px; 
+		    	color:#666;}
+		    .weblogin form ul li{
+		    	width:173px;
+		    	height: 40px;
+		    	line-height: 40px;
+		    	padding-left:50px;
+		    	background: url(../authserver/custom/login/images/user.jpg) no-repeat;}
+		    .weblogin form ul li input{-webkit-appearance: none;}
+		    .weblogin form ul li.li01{
+		    	background:url(../authserver/custom/login/images/pwd.jpg) no-repeat;
+		    	margin-top: 10px;
+		    }
+		    .weblogin form ul li.li02{
+		    	background:none;
+		    	text-align: right;
+		    	font-size: 14px;
+		    }
+		    .weblogin form ul li.li02 a{
+		    	color:#a40005;	
+		    }
+		    .weblogin form ul li.li03{
+		    	background:url(../authserver/custom/login/images/login.png) no-repeat;
+		    	width:223px;
+		    	padding-left: 0;
+		    	text-align: center;
+		    	font-size: 18px;
+		    	color:#FFFFFF;
+		    	cursor: pointer;
+		    }
+		    .weblogin form ul li input{
+		    	background: transparent;
+		    	width:169px;
+		    	height: 40px;
+		    	line-height: 40px;
+		    }
+		    /*第三方登录*/
+		    .weblogin .slogin{
+		    	width:223px;
+		    	margin: 0 auto;
+		    	position: relative;
+		    	z-index: 9999;
+		    }
+		    .weblogin .slogin p{
+		    	width:100%;
+		    	height: 30px;
+		    	line-height: 30px;
+		    	text-align: center;
+		    	color: #999;
+		    }
+		    .weblogin .slogin .line{
+		    	width:61px;
+		    	height: 1px;
+		    	background: #c2c2c2;
+		    	position: absolute;
+		    	top:15px;
+		    	left: 5px;
+		    	z-index: 99999;
+		    }
+		    .weblogin .slogin .line1{
+		    	position: absolute;
+		    	top:15px;
+		    	left:155px;
+		    	z-index: 99999;
+		    }
+		    .weblogin .slogin a{
+		    	display: block;
+		    	width:36px;
+		    	height:36px;
+		    	float: left;
+		    	margin-left:57px;
+		    }
+		    .weblogin .slogin a.a1{
+		    	margin-left:80px;
+		    	background: url(../authserver/custom/login/images/qq.png) no-repeat;
+		    	margin-left: 0;
+		    }
+		    .weblogin .slogin a.a2{
+		    	background: url(../authserver/custom/login/images/wb.png) no-repeat;
+		    }
+		    .weblogin .slogin a.a3{
+		    	background: url(../authserver/custom/login/images/wx.png) no-repeat;
+		    }
+		    /*背景*/
+		    .swiper-container {
+		    	width: 100%;
+		    	height: 100%;
+		    	}
+		    .swiper-container .swiper-wrapper .bg1{
+		    	background:url(../authserver/custom/login/images/loginbg.jpg) center center no-repeat;
+		    	background-size:cover;"
+		    	}
+		    .swiper-slide {
+		        text-align: center;
+		        background: red;
+		        /* Center slide text vertically */
+		        display: -webkit-box;
+		        display: -ms-flexbox;
+		        display: -webkit-flex;
+		        display: flex;
+		        -webkit-box-pack: center;
+		        -ms-flex-pack: center;
+		        -webkit-justify-content: center;
+		        justify-content: center;
+		        -webkit-box-align: center;
+		        -ms-flex-align: center;
+		        -webkit-align-items: center;
+		        align-items: center;
+		    }
+		    .footer{
+		    	width:100%;
+		    	height: 48px;
+		    	color: #F1F1F1;
+		    	background: rgba(0,0,0,.4);
+		    	text-align:center;
+		    	padding-top: 10px;
+		    	position: absolute;
+		    	bottom:0;
+		    	z-index: 9999;
+		    }
+		</style>
+</head>
+<script>
+    
+
+</script>
+
+
+<link href="/authserver/custom/css/login.css;JSESSIONID_AUTH=OH8GzGsd5a0VGO4PJKeYX_uDzqzEVw3YN4ikuT3vEWxCcoH3Ggvd!1552964824" rel="stylesheet">
+<link href="/authserver/custom/css/iCheck/custom.css;JSESSIONID_AUTH=OH8GzGsd5a0VGO4PJKeYX_uDzqzEVw3YN4ikuT3vEWxCcoH3Ggvd!1552964824" rel="stylesheet">
+
+
+
+
+<script type="text/javascript">
+    var secure = "true";
+	var pwdDefaultEncryptSalt = "pT5OfwBwyuxvBMH7";
+</script>
+<body onload="loadFresh();">
+<div class="auth_bg">
+    <img src="/authserver/custom/images/login-bg-autumn.jpg;JSESSIONID_AUTH=OH8GzGsd5a0VGO4PJKeYX_uDzqzEVw3YN4ikuT3vEWxCcoH3Ggvd!1552964824" alt="">
+</div>
+ 
+<!--header-->
+<div class="header">
+  <div class="header-center clearfix">
+	<div class="logo1 fl"><img src="/authserver/custom/login/images/logo.png" alt="logo" title="logo"></div>
+
+		<div class="fr header-center-right">
+			<img src="/authserver/custom/login/images/element.png" style="float: left; margin-top: 13px;">
+		</div>
+	</div>
+</div>
+<!--header end-->
+<div class="auth_page_wrapper">
+
+<!--<div class="auth_logo">
+    <img src="/authserver/custom/images/login-logo.png;JSESSIONID_AUTH=OH8GzGsd5a0VGO4PJKeYX_uDzqzEVw3YN4ikuT3vEWxCcoH3Ggvd!1552964824" alt="logo"/>
+</div>-->
+<div class="auth_login_content">
+<!-- 这一段之前注释掉了，我又放出来了-->
+    <div class="auth_login_left">
+        <div class="auth_others">
+            
+                <h4>您还可以使用以下方式登录</h4>
+                <ul>
+                    
+                        <li>
+                            <a href="combinedLogin.do?type=qq&success=https://ids.shanghaitech.edu.cn/authserver/login?service=https%3A%2F%2Feams.shanghaitech.edu.cn%2Feams%2FcourseTableForStd%21courseTable.action"
+                               style="display: inline-block;">
+                                    <span class="auth_icon_bg">
+                                        <i class="auth_icon_qq"></i>
+                                    </span>
+                                <span class="auth_icon_text">使用腾讯QQ登录</span>
+                            </a>
+							
+                        </li>
+                    
+                        <li>
+                            <a href="combinedLogin.do?type=weixin&success=https://ids.shanghaitech.edu.cn/authserver/login?service=https%3A%2F%2Feams.shanghaitech.edu.cn%2Feams%2FcourseTableForStd%21courseTable.action"
+                               style="display: inline-block;">
+                                    <span class="auth_icon_bg">
+                                        <i class="auth_icon_weixin"></i>
+                                    </span>
+                                <span class="auth_icon_text">使用微信登录</span>
+                            </a>
+							
+                        </li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+    
+        
+        
+            
+        
+        
+    
+    <!--<div class="auth_login_right">-->
+        <div class="auth_tab">
+            <div class="auth_tab_links">
+                <ul>
+                    <li id="accountLogin" style="width:100%;font-size: 16px;height:50px;border-radius: 10px 10px 0px 0px;" class="selected" tabid="01"><span style="line-height: 50px;">账号登录</span></li>
+                    
+					
+					 <!--
+                    
+					-->
+                </ul>
+            </div>
+            <div class="clearfloat"></div>
+            <div class="auth_tab_content">
+                <div tabid="01" class="auth_tab_content_item">
+                    <form id="casLoginForm" class="fm-v clearfix amp-login-form" role="form" action="/authserver/login?service=https%3A%2F%2Feams.shanghaitech.edu.cn%2Feams%2FcourseTableForStd%21courseTable.action" method="post">
+                        
+
+                        <p>
+                            <i class="auth_icon auth_icon_user"></i>
+                            <input id="username" name="username" placeholder="用户名" class="auth_input" type="text" value=""/>
+                            <span id="usernameError" style="display:none;" class="auth_error">请输入用户名</span>
+                        </p>
+
+                        <p>
+                            <i class="auth_icon auth_icon_pwd"></i>
+                            <input id="password" placeholder="密码" class="auth_input" type="password" value="" autocomplete="off"/>
+							<input id="passwordEncrypt" name="password" style="display:none;" type="text" value=""/>
+                            <span id="passwordError" style="display:none;" class="auth_error">请输入密码</span>
+                        </p>
+
+                        <p id="cpatchaDiv">
+
+                        </p>
+
+<!--                         
+                            <p>
+                                <input type="checkbox" name="rememberMe" id="rememberMe"/> <label
+                                    onmousedown="javascript:$('.iCheck-helper').click();">一周内免登录</label>
+                            </p>
+                        
+-->
+                        <p>
+                            <button type="button" class="auth_login_btn primary full_width">登录
+                            </button>
+                        </p>
+                        <a id="getBackPasswordMainPage" href="getBackPasswordMainPage.do" class="auth_login_forgetp">
+                            <small>忘记密码？</small>
+                        </a>
+<br/>
+	    <div class="auth-language">Language:
+          <div class="auth-language-select">
+            <select id="language" onchange="changeLanguage()">
+              <option value="zh_CN">简体中文</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+        </div>
+
+                        <input type="hidden" name="lt" value="LT-1225511-V9vqelMvZbn9CLGd9uMFWI6zbBWaxo1662266403611-HQtF-cas"/>
+                        <input type="hidden" name="dllt" value="userNamePasswordLogin"/>
+                        <input type="hidden" name="execution" value="e1s1"/>
+                        <input type="hidden" name="_eventId" value="submit"/>
+                        <input type="hidden" name="rmShown" value="1">
+						<input type="hidden" id="pwdDefaultEncryptSalt" value="pT5OfwBwyuxvBMH7"/>
+                    </form>
+                </div>
+                
+
+				<!--20191011注释掉
+                
+				-->
+				
+
+
+                
+            </div>
+        </div>
+    <!--</div>-->
+</div>
+
+<div id="hidenCaptchaDiv" style="display: none;">
+    <i class="auth_icon auth_icon_bar"></i>
+    <input type="text" placeholder="验证码" id="captchaResponse" name="captchaResponse"
+           class="auth_input captcha-input"/>
+    <img id="captchaImg" class="captcha-img" alt="验证码" title="验证码"/>
+            <span style="cursor: pointer;color: #1dadff;margin-left: 2px;" id="changeCaptcha"
+                  class="chk_text"></span>
+    <span id="cpatchaError" style="display:none;" class="auth_error">请输入验证码</span>
+</div>
+
+
+<div class="clearfloat"></div>
+<!--<div class="auth_login_footer">
+    
+
+ <span>
+     Copyright&nbsp;©&nbsp;2014-2017 上海科技大学&nbsp;&nbsp;版权所有&nbsp;&nbsp;&nbsp;&nbsp;沪ICP备13001436号
+ </span>
+
+</div>-->
+</div>
+<!--footer-->
+<div class="footer">Copyright © 2016-2018 上海科技大学 版权所有　沪ICP备13001436号<br>上海市浦东新区华夏中路393号 邮编：201210</div>
+<!--footer end-->
+<script type="text/javascript" src="/authserver/custom/js/jquery.min.js;JSESSIONID_AUTH=OH8GzGsd5a0VGO4PJKeYX_uDzqzEVw3YN4ikuT3vEWxCcoH3Ggvd!1552964824"></script>
+<script type="text/javascript" src="/authserver/custom/js/login-language.js;JSESSIONID_AUTH=OH8GzGsd5a0VGO4PJKeYX_uDzqzEVw3YN4ikuT3vEWxCcoH3Ggvd!1552964824"></script>
+<script type="text/javascript" src="/authserver/custom/js/icheck.min.js;JSESSIONID_AUTH=OH8GzGsd5a0VGO4PJKeYX_uDzqzEVw3YN4ikuT3vEWxCcoH3Ggvd!1552964824"></script>
+
+<script type="text/javascript" src="/authserver/custom/js/login.js;JSESSIONID_AUTH=OH8GzGsd5a0VGO4PJKeYX_uDzqzEVw3YN4ikuT3vEWxCcoH3Ggvd!1552964824?v=1.0"></script>
+<script type="text/javascript" src="/authserver/custom/js/login-wisedu_v1.0.js;JSESSIONID_AUTH=OH8GzGsd5a0VGO4PJKeYX_uDzqzEVw3YN4ikuT3vEWxCcoH3Ggvd!1552964824?v=1.0"></script>
+<script type="text/javascript" src="/authserver/custom/js/encrypt.js;JSESSIONID_AUTH=OH8GzGsd5a0VGO4PJKeYX_uDzqzEVw3YN4ikuT3vEWxCcoH3Ggvd!1552964824"></script>
+
+<script type="text/javascript">
+
+    // 选中tab框
+  var dllt = '';
+  //  if (dllt != '' && dllt == 'dynamicLogin') {
+  //      selectLi($("#dyLogin"));
+  //  } else {
+  //      selectLi($("#accountLogin"));
+  //  }
+	    if (dllt != '' &&dllt == 'dynamicLogin') {
+			selectLi($("#dyLogin"));
+			} else if (dllt != '' &&dllt == 'qrLogin'){
+		getQrCode();
+		countDown();
+		selectLi($("#qrLogin"));
+		   } else {
+			selectLi($("#accountLogin"));
+    }
+
+    //cookie start
+    function trim(str){
+        return str.replace(/(^\s*)|(\s*$)/g, "");
+    }
+	function getCookie(name) {
+        var strcookie = document.cookie;//获取cookie字符串
+        var arrcookie = strcookie.split(";");//分割
+		var temp = "";
+        //遍历匹配
+        for (var i = 0; i < arrcookie.length; i++) {
+           var arr = arrcookie[i].split("=");
+           if (trim(arr[0]) == name) {
+               temp = arr[1];
+           }
+        }
+        return temp;
+    }
+	//cookie end
+    $(document).ready(function () {
+		//cookie start
+		$(".auth_login_btn").click(function(){
+		    var flag = true;
+            var userId = $("#username").val();
+            //jQuery.noConflict();
+            var yylx = getCookie("org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE");
+            console.log(yylx);
+			$.ajax({
+                type: "get",
+                url: 'https://ids.shanghaitech.edu.cn/',
+               dataType: "json",
+                success: function (data) {
+					//继续登录
+					$("#casLoginForm").submit();
+               },
+                error:function(){
+				    //继续登录
+					$("#casLoginForm").submit();
+				}
+            });
+		});
+		//cookie end
+    	if (dllt != '' && dllt == 'dynamicLogin') {
+		}else{
+			$("#captchaImg").attr("src","captcha.html?ts=" + new Date().getMilliseconds());
+		}
+
+        
+
+        var service = GetQueryString("service");
+        if (service) {
+            $("#getBackPasswordMainPage").attr("href", "getBackPasswordMainPage.do?service=" + encodeURIComponent(service));
+        }
+    });
+</script>
+</body>
+
+</html>
+    
+
